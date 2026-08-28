@@ -1,0 +1,360 @@
+- test_id: ADMIN-COUPON-AI-001
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-002
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-003
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-004
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-005
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-006
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-007
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-008
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-009
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-010
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-011
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-012
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-013
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-014
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-015
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-016
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-017
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-018
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-019
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-020
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-021
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-022
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-023
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-024
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-025
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-026
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-027
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-028
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-029
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-030
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-031
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-032
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-033
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-034
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-035
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null
+- test_id: ADMIN-COUPON-AI-036
+  ai_review:
+    suggested_verdict: null
+    reasoning: []
+  human_review:
+    verdict: null
+    reasoning: null
+  correction:
+    required: false
+    description: null

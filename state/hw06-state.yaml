@@ -12,14 +12,14 @@ apply_coupon:
   ai_generation: done
   generated_count: 36
   human_audit: done
-  human_added_count: 0
+  human_added_count: 7
   postman: pending
   execution: pending
   bugs: pending
 admin_create_coupon:
-  spec_analysis: pending
-  ai_generation: pending
-  generated_count: 0
+  spec_analysis: done
+  ai_generation: done
+  generated_count: 36
   human_audit: pending
   human_added_count: 0
   postman: pending

@@ -339,3 +339,62 @@ Prepared the Apply Coupon post-audit gap analysis with seven distinct extension 
 
 `NOT_RETAINED`
 
+## AI-013
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:27:31 +07
+
+### Prompt
+
+```text
+I have reviewed and approve all, continue
+```
+
+### AI Response Summary
+
+Applied the student's explicit acceptance of all seven Apply Coupon extension candidates. Created and validated seven source HUMAN tests with human_confirmation true, assembled and verified a 43-case final suite with 36 AI and seven human tests, zero duplicate IDs, and zero schema errors. Updated human-added state to seven, archived the extension gate, and reset tmp.md.
+
+### Artifacts
+
+- `tests/apply-coupon/human-tests.yaml`
+- `tests/apply-coupon/final-tests.yaml`
+- `state/hw06-state.yaml`
+- `ai-logs/human-gates/APPLY-COUPON-EXTEND-01.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-014
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:31:10 +07
+
+### Prompt
+
+```text
+I have reviewed and approve all, continue
+```
+
+### AI Response Summary
+
+Completed and validated Admin Create Coupon specification analysis and generated 36 AI tests. The context traces FR-12/FR-17 and SEC-02/03/05, required fields, uniqueness, enum and numeric constraints, expiry, persistence, cleanup, and explicit ambiguities. The suite covers valid percent/fixed creation, missing/invalid/user tokens, duplicate codes, field boundaries and types, SQL injection, role escalation, persistence, partial-write prevention, and concurrent uniqueness with no coverage warnings. Updated specification/generation state and prepared a 36-record human-audit scaffold without human decisions.
+
+### Artifacts
+
+- `tests/admin-create-coupon/api-context.yaml`
+- `tests/admin-create-coupon/traceability.md`
+- `tests/admin-create-coupon/generated-tests.yaml`
+- `tests/admin-create-coupon/coverage.json`
+- `tests/admin-create-coupon/coverage.md`
+- `tests/admin-create-coupon/audit.yaml`
+- `state/hw06-state.yaml`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+

@@ -1,39 +1,39 @@
-# HUMAN GATE — Select Apply Coupon Human Tests
+# HUMAN GATE — Review Admin Create Coupon Tests
 
-**Gate ID:** APPLY-COUPON-EXTEND-01  
+**Gate ID:** ADMIN-COUPON-AUDIT-01  
 **Status:** WAITING_FOR_HUMAN  
-**Decision:** ACCEPT
+**Decision:** PENDING
 
 ## Reason for stopping
 
-At least five student-owned Apply Coupon tests are required. Codex proposed seven gaps but cannot claim student authorship or set `human_confirmation: true` without explicit selection.
+All 36 AI-generated Admin Create Coupon tests require final student-authored verdicts and reasoning.
 
 ## Exact human task
 
-Review `tests/apply-coupon/gap-analysis.md`. Mark every candidate `ACCEPT`, `MODIFY`, or `REJECT`; accept or modify at least five. Describe exact changes for every `MODIFY`.
+Review each record in `tests/admin-create-coupon/audit.yaml` against the generated test and API context. Fill every record with:
 
-| Candidate | Decision |
-| --- | --- |
-| APPLY-CAND-01 — Usage limit isolated per user | ACCEPT |
-| APPLY-CAND-02 — Concurrent final-allowance applications | ACCEPT |
-| APPLY-CAND-03 — Very large total arithmetic | ACCEPT |
-| APPLY-CAND-04 — Fractional monetary total | ACCEPT |
-| APPLY-CAND-05 — JWT subject deleted/deactivated | ACCEPT |
-| APPLY-CAND-06 — Duplicate `user_id` JSON keys | ACCEPT |
-| APPLY-CAND-07 — Coupon deactivation race | ACCEPT |
+```yaml
+human_review:
+  verdict: VALID | INVALID | INCOMPLETE
+  reasoning: <your concrete human reasoning>
+```
+
+For every `INVALID` or `INCOMPLETE` verdict, set `correction.required: true` and provide a correction description.
 
 ## Files to review
 
-- `tests/apply-coupon/gap-analysis.md`
-- `tests/apply-coupon/generated-tests.yaml`
-- `tests/apply-coupon/api-context.yaml`
+- `tests/admin-create-coupon/generated-tests.yaml`
+- `tests/admin-create-coupon/api-context.yaml`
+- `tests/admin-create-coupon/traceability.md`
+- `tests/admin-create-coupon/audit.yaml`
+
+Pay special attention to role enforcement, `SPEC_UNDEFINED` statuses/date rules, fractional numeric behavior, percent values above 100, persistence checks, and concurrency feasibility.
 
 ## Evidence required
 
-- Explicit decision for all seven candidates.
-- At least five accepted or modified cases.
-- Exact instructions for modifications.
-- Overall `Decision` set to `APPROVED`, `MODIFIED`, or `REJECTED`.
+- All 36 verdicts and substantive human reasons.
+- Corrections for every invalid/incomplete case.
+- Overall decision set to `APPROVED`, `MODIFIED`, or `REJECTED`.
 
 **Human notes:**
 
@@ -41,4 +41,4 @@ APPROVED
 
 ## Completion instructions
 
-Save this file and ask Codex to continue. Codex will persist only accepted/modified cases, validate them, assemble the final Apply Coupon suite, update state/TODO/audit, archive this gate, and continue.
+Save the audit and ask Codex to continue. Codex will validate it, apply only your confirmed decisions, update state/TODO/audit, archive the gate, and proceed.

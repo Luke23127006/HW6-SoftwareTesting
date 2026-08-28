@@ -1,0 +1,48 @@
+api: {id: admin_create_coupon, feature: FR-17, method: POST, path: /api/admin/coupons, authentication_required: true, authorization_required: "role = admin", base_url: "http://localhost:3000"}
+request:
+  content_type: application/json
+  headers: {required: [{name: Authorization, format: "Bearer <valid admin JWT>"}]}
+  path_parameters: []
+  query_parameters: []
+  body:
+    required: true
+    fields:
+      - {name: code, required: true, type: string, constraints: unique}
+      - {name: type, required: true, type: string, enum: [percent, fixed]}
+      - {name: discount_value, required: true, type: number, minimum_exclusive: 0}
+      - {name: expired_at, required: true, type: SPEC_UNDEFINED, format: SPEC_UNDEFINED}
+      - {name: min_order_amount, required: true, type: number, minimum_inclusive: 0}
+      - {name: max_uses_per_user, required: true, type: number, minimum_inclusive: 1}
+responses:
+  success: {status: SPEC_UNDEFINED, schema: SPEC_UNDEFINED, persistence: "created coupon must be viewable as part of Admin coupon CRUD"}
+  failures: {status: SPEC_UNDEFINED, schema: SPEC_UNDEFINED}
+business_rules:
+  - {id: FR-12-R1, description: All /api/admin/* endpoints require a valid JWT., source: eshop-sut/README.md#fr-12}
+  - {id: FR-12-R2, description: All /api/admin/* endpoints require role admin in the token., source: eshop-sut/README.md#fr-12}
+  - {id: FR-17-R1, description: Admin can create coupons., source: eshop-sut/README.md#fr-17}
+  - {id: FR-17-R2, description: code is required and unique., source: eshop-sut/README.md#fr-17}
+  - {id: FR-17-R3, description: type is required and is percent or fixed., source: eshop-sut/README.md#fr-17}
+  - {id: FR-17-R4, description: discount_value is required and positive., source: eshop-sut/README.md#fr-17}
+  - {id: FR-17-R5, description: expired_at is required., source: eshop-sut/README.md#fr-17}
+  - {id: FR-17-R6, description: min_order_amount is required and at least zero., source: eshop-sut/README.md#fr-17}
+  - {id: FR-17-R7, description: max_uses_per_user is required and at least one., source: eshop-sut/README.md#fr-17}
+states:
+  - {id: ADMIN-COUPON-STATE-01, from: absent, event: valid admin create, to: persisted and viewable coupon, source: FR-17-R1}
+security_requirements: [SEC-02, SEC-03, SEC-05]
+dependencies:
+  fixtures: [Valid admin JWT, Valid normal-user JWT, Unique runtime coupon-code generator]
+  setup: [Create unique codes per test, Capture created coupon IDs]
+  cleanup: [Delete only coupons created by the suite through DELETE /api/admin/coupons/:id]
+ambiguities:
+  - {id: ADMIN-AMB-01, description: Success and validation failure HTTP statuses are not specified.}
+  - {id: ADMIN-AMB-02, description: Success and error response schemas are not specified.}
+  - {id: ADMIN-AMB-03, description: expired_at accepted format timezone and whether it must be future are not specified.}
+  - {id: ADMIN-AMB-04, description: Integer versus fractional numeric acceptance is not specified.}
+  - {id: ADMIN-AMB-05, description: Maximum lengths and code normalization/case behavior are not specified.}
+  - {id: ADMIN-AMB-06, description: Whether percent discount_value may exceed 100 is not specified.}
+  - {id: ADMIN-AMB-07, description: Missing null wrong-type extra-field and coercion behavior is not specified beyond required constraints.}
+  - {id: ADMIN-AMB-08, description: Atomicity and visibility timing after creation are not specified.}
+security_observations:
+  - SEC-03 requires actual admin role enforcement not merely token presence.
+  - SEC-05 is indirectly probed through code injection; black-box testing cannot prove query parameterization.
+

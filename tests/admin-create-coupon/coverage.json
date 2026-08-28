@@ -1,0 +1,40 @@
+{
+  "test_count": 36,
+  "category_counts": {
+    "functional": 2,
+    "domain": 8,
+    "boundary": 11,
+    "state": 2,
+    "authentication": 3,
+    "authorization": 1,
+    "security": 2,
+    "schema": 1,
+    "error-handling": 6
+  },
+  "requirement_counts": {
+    "FR-12-R1": 4,
+    "FR-12-R2": 3,
+    "FR-17-R1": 3,
+    "FR-17-R2": 9,
+    "FR-17-R3": 7,
+    "FR-17-R4": 7,
+    "FR-17-R5": 6,
+    "FR-17-R6": 5,
+    "FR-17-R7": 6,
+    "SEC-02": 3,
+    "SEC-03": 2,
+    "ADMIN-AMB-05": 2,
+    "ADMIN-AMB-07": 2,
+    "SEC-05": 1,
+    "ADMIN-AMB-06": 1,
+    "ADMIN-AMB-04": 1,
+    "ADMIN-AMB-03": 2,
+    "ADMIN-AMB-08": 1
+  },
+  "context_security_requirements": [
+    "SEC-02",
+    "SEC-03",
+    "SEC-05"
+  ],
+  "warnings": []
+}
