@@ -1,13 +1,12 @@
 login:
-  spec_analysis: pending
-  ai_generation: pending
-  generated_count: 0
+  spec_analysis: done
+  ai_generation: done
+  generated_count: 38
   human_audit: pending
   human_added_count: 0
   postman: pending
   execution: pending
   bugs: pending
-
 apply_coupon:
   spec_analysis: pending
   ai_generation: pending
@@ -17,7 +16,6 @@ apply_coupon:
   postman: pending
   execution: pending
   bugs: pending
-
 admin_create_coupon:
   spec_analysis: pending
   ai_generation: pending
@@ -27,7 +25,6 @@ admin_create_coupon:
   postman: pending
   execution: pending
   bugs: pending
-
 global:
   cicd: pending
   report: pending

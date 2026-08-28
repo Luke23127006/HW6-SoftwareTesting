@@ -1,0 +1,145 @@
+api:
+  id: login
+  feature: FR-02
+  method: POST
+  path: /api/login
+  authentication_required: false
+  authorization_required: false
+  base_url: http://localhost:3000
+  sources:
+    - eshop-sut/api_specification.md#12-dang-nhap
+    - eshop-sut/README.md#fr-02-dang-nhap--khoa-tai-khoan
+    - eshop-sut/README.md#9-yeu-cau-bao-mat-security-requirements--tham-khao
+
+request:
+  content_type: application/json
+  headers:
+    required: []
+  path_parameters: []
+  query_parameters: []
+  body:
+    required: true
+    fields:
+      - name: email
+        required: true
+        type: string
+        format: SPEC_UNDEFINED
+        source_notes:
+          - FR-02 says the user enters an email.
+          - FR-02 requires HTML input type=email, but does not define server-side API format validation.
+      - name: password
+        required: true
+        type: string
+        format: SPEC_UNDEFINED
+        source_notes:
+          - FR-02 says the user enters a password.
+          - Password complexity is defined for registration/reset, not as a Login API input constraint.
+
+responses:
+  success:
+    status: 200
+    content_type: application/json
+    body:
+      token:
+        required: true
+        type: string
+        semantic: JWT
+      user:
+        required: true
+        type: SPEC_UNDEFINED
+        schema: SPEC_UNDEFINED
+  invalid_credentials:
+    status: SPEC_UNDEFINED
+    error_schema: SPEC_UNDEFINED
+    disclosure_rule: Must return an appropriate error without revealing the specific cause.
+  locked_account:
+    status: SPEC_UNDEFINED
+    error_schema: SPEC_UNDEFINED
+    disclosure_rule: Must return an appropriate error without revealing the specific cause.
+
+business_rules:
+  - id: FR-02-R1
+    description: A failed login increments the failed-login counter by exactly one.
+    source: eshop-sut/README.md#fr-02-dang-nhap--khoa-tai-khoan
+  - id: FR-02-R2
+    description: Three or more consecutive failed logins temporarily lock the account.
+    source: eshop-sut/README.md#fr-02-dang-nhap--khoa-tai-khoan
+  - id: FR-02-R3
+    description: The temporary lock lasts 30 seconds in the demo environment.
+    source: eshop-sut/README.md#fr-02-dang-nhap--khoa-tai-khoan
+  - id: FR-02-R4
+    description: Login failure messaging must be appropriate and must not disclose the specific cause.
+    source: eshop-sut/README.md#fr-02-dang-nhap--khoa-tai-khoan
+  - id: FR-02-R5
+    description: Successful login returns a JWT token.
+    source: eshop-sut/README.md#fr-02-dang-nhap--khoa-tai-khoan
+  - id: FR-02-R6
+    description: The client sends the JWT on later authenticated requests as Authorization Bearer token.
+    source: eshop-sut/README.md#fr-02-dang-nhap--khoa-tai-khoan
+
+states:
+  - id: LOGIN-STATE-01
+    from: eligible
+    event: failed login with incorrect credentials
+    to: eligible with failed-attempt counter increased by exactly one
+    guard: resulting consecutive failure count is less than 3
+    source: FR-02-R1
+  - id: LOGIN-STATE-02
+    from: eligible with 2 consecutive failures
+    event: third consecutive failed login
+    to: locked
+    duration_seconds: 30
+    source: FR-02-R2, FR-02-R3
+  - id: LOGIN-STATE-03
+    from: locked
+    event: 30-second lock duration elapses
+    to: eligible
+    source: FR-02-R3
+  - id: LOGIN-STATE-04
+    from: eligible with a nonzero consecutive-failure count
+    event: successful login
+    to: SPEC_UNDEFINED
+    source: SPEC_UNDEFINED
+    note: FR-02 does not explicitly state whether success resets the counter, despite using the word consecutive.
+
+security_requirements:
+  - SEC-01
+  - SEC-05
+
+dependencies:
+  fixtures:
+    - A registered user with known credentials and an unlocked account.
+    - A registered user whose failure count/lock state can be controlled for transition tests.
+  setup:
+    - Reset or isolate account state before each state-transition sequence.
+  cleanup:
+    - Restore mutable failed-attempt and lock state, or reset the demo database after the sequence.
+  execution_observations_source: docs/test-environment.md
+
+ambiguities:
+  - id: LOGIN-AMB-01
+    description: HTTP status codes for invalid credentials and locked accounts are not specified.
+  - id: LOGIN-AMB-02
+    description: Error response schemas and exact messages are not specified beyond the non-disclosure rule.
+  - id: LOGIN-AMB-03
+    description: The structure and allowed fields of the success response user object are not specified.
+  - id: LOGIN-AMB-04
+    description: Server-side email syntax validation and behavior for malformed email values are not specified; type=email is a client UI requirement.
+  - id: LOGIN-AMB-05
+    description: API behavior for missing, null, empty, non-string, or extra request fields is not specified.
+  - id: LOGIN-AMB-06
+    description: JWT claims, signing algorithm, expiration, and token lifetime are not specified.
+  - id: LOGIN-AMB-07
+    description: FR-02 does not explicitly define whether a successful login resets the consecutive-failure counter.
+  - id: LOGIN-AMB-08
+    description: The behavior of login attempts made during the 30-second lock is not specified, including whether they extend the lock.
+  - id: LOGIN-AMB-09
+    description: The exact timing boundary at 30 seconds and permitted clock tolerance are not specified.
+  - id: LOGIN-AMB-10
+    description: The repository-required source/assignment.md, source/api_specification.md, and source/system_requirements.md files are absent; this context uses the canonical files named by current_context.md and todo.md.
+
+security_observations:
+  - SEC-01 requires passwords not to be stored in plaintext; verification requires storage inspection and must not be inferred solely from Login API output.
+  - SEC-05 requires parameterized database queries, so SQL-injection probes should verify that email/password input cannot alter query semantics.
+  - FR-02 non-disclosure requires equivalent outward failure detail for unknown email and incorrect password, subject to unspecified exact status/schema.
+

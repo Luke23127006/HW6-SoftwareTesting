@@ -1,0 +1,493 @@
+- id: LOGIN-AI-001
+  source: AI
+  title: Login with valid seeded user credentials
+  requirements: [FR-02, FR-02-R5]
+  techniques: [happy_path, equivalence_partitioning]
+  category: functional
+  priority: high
+  preconditions: [A registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: 200, assertions: [response contains a non-empty token, token is structurally a JWT, response contains user]}
+  cleanup: []
+  rationale: Covers the valid equivalence class and defined success contract.
+
+- id: LOGIN-AI-002
+  source: AI
+  title: Valid login succeeds with exact case-sensitive password
+  requirements: [FR-02, FR-02-R5]
+  techniques: [equivalence_partitioning]
+  category: domain
+  priority: high
+  preconditions: [A registered user exists with a mixed-case password, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: 200, assertions: [response contains a non-empty JWT token]}
+  cleanup: []
+  rationale: Establishes the valid password partition before case variants are tested.
+
+- id: LOGIN-AI-003
+  source: AI
+  title: Unknown well-formed email is rejected without account disclosure
+  requirements: [FR-02, FR-02-R4]
+  techniques: [equivalence_partitioning, security_testing]
+  category: security
+  priority: high
+  preconditions: [No account exists for absent@example.test]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: absent@example.test, password: "AnyPass1!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login is not successful, response does not reveal whether the email exists, response does not contain a token]}
+  cleanup: []
+  rationale: Covers unknown-account partition and FR-02 non-disclosure.
+
+- id: LOGIN-AI-004
+  source: AI
+  title: Existing email with incorrect password is rejected
+  requirements: [FR-02, FR-02-R1, FR-02-R4]
+  techniques: [equivalence_partitioning]
+  category: functional
+  priority: high
+  preconditions: [A registered user exists, The account is unlocked with zero consecutive failures]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: WrongPass1!}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login is not successful, response does not contain a token, failure detail does not disclose the specific cause]}
+  cleanup: [Restore the account failure and lock state]
+  rationale: Covers invalid password and begins the documented counter behavior.
+
+- id: LOGIN-AI-005
+  source: AI
+  title: Password case variant is rejected
+  requirements: [FR-02, FR-02-R1]
+  techniques: [equivalence_partitioning]
+  category: domain
+  priority: medium
+  preconditions: [A registered user exists with password Test1234!, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login is not successful, response does not contain a token]}
+  cleanup: [Restore the account failure and lock state]
+  rationale: Separates exact credentials from a case-changed password partition.
+
+- id: LOGIN-AI-006
+  source: AI
+  title: Email case variant behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-04]
+  techniques: [equivalence_partitioning]
+  category: domain
+  priority: medium
+  preconditions: [A registered user exists as test@eshop.com, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: TEST@ESHOP.COM, password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [observed case-sensitivity behavior is recorded without claiming a specified oracle]}
+  cleanup: [Restore mutable account state if the request fails]
+  rationale: Email normalization and case behavior are undefined and require human review.
+
+- id: LOGIN-AI-007
+  source: AI
+  title: Email with surrounding whitespace behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-04]
+  techniques: [equivalence_partitioning]
+  category: domain
+  priority: medium
+  preconditions: [A registered user exists as test@eshop.com, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: " test@eshop.com ", password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [observed whitespace-normalization behavior is recorded without claiming a specified oracle]}
+  cleanup: [Restore mutable account state if applicable]
+  rationale: Trimming behavior is not defined by the source.
+
+- id: LOGIN-AI-008
+  source: AI
+  title: Malformed email string behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-04]
+  techniques: [equivalence_partitioning]
+  category: domain
+  priority: medium
+  preconditions: [The test account state is isolated]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: not-an-email, password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [observed API validation behavior is recorded, response does not contain a token unless credentials resolve to a real account]}
+  cleanup: []
+  rationale: HTML type=email does not establish a server-side API oracle.
+
+- id: LOGIN-AI-009
+  source: AI
+  title: Missing email field behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [robustness_testing]
+  category: error-handling
+  priority: high
+  preconditions: []
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token]}
+  cleanup: []
+  rationale: Required-field failure behavior and status are unspecified.
+
+- id: LOGIN-AI-010
+  source: AI
+  title: Null email behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [equivalence_partitioning]
+  category: error-handling
+  priority: medium
+  preconditions: []
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: null, password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token]}
+  cleanup: []
+  rationale: Covers the null email partition without inventing a status.
+
+- id: LOGIN-AI-011
+  source: AI
+  title: Empty email behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [boundary_value_analysis]
+  category: boundary
+  priority: medium
+  preconditions: []
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: "", password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token]}
+  cleanup: []
+  rationale: Empty string is the lower string-length boundary; exact validation is undefined.
+
+- id: LOGIN-AI-012
+  source: AI
+  title: Non-string email behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [type_partitioning]
+  category: domain
+  priority: medium
+  preconditions: []
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: 12345, password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token]}
+  cleanup: []
+  rationale: Covers a wrong JSON type for email.
+
+- id: LOGIN-AI-013
+  source: AI
+  title: Missing password field behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [robustness_testing]
+  category: error-handling
+  priority: high
+  preconditions: [A registered user exists]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token]}
+  cleanup: [Restore mutable account state if the request counts as a failure]
+  rationale: Required-field failure behavior and counter effect are unspecified.
+
+- id: LOGIN-AI-014
+  source: AI
+  title: Null password behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [equivalence_partitioning]
+  category: error-handling
+  priority: medium
+  preconditions: [A registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: null}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token]}
+  cleanup: [Restore mutable account state]
+  rationale: Covers the null password partition.
+
+- id: LOGIN-AI-015
+  source: AI
+  title: Empty password behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [boundary_value_analysis]
+  category: boundary
+  priority: medium
+  preconditions: [A registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: ""}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token]}
+  cleanup: [Restore mutable account state]
+  rationale: Empty string is the lower string-length boundary; exact validation is undefined.
+
+- id: LOGIN-AI-016
+  source: AI
+  title: Non-string password behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [type_partitioning]
+  category: domain
+  priority: medium
+  preconditions: [A registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: 12345678}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token]}
+  cleanup: [Restore mutable account state]
+  rationale: Covers a wrong JSON type for password.
+
+- id: LOGIN-AI-017
+  source: AI
+  title: Empty JSON object behavior is characterized
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [robustness_testing]
+  category: error-handling
+  priority: high
+  preconditions: []
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not contain a token, response does not expose internal errors]}
+  cleanup: []
+  rationale: Covers simultaneous absence of both documented fields.
+
+- id: LOGIN-AI-018
+  source: AI
+  title: JSON null request body is handled safely
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [robustness_testing]
+  category: error-handling
+  priority: high
+  preconditions: []
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: null}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response rather than exposing a stack trace, response does not contain a token]}
+  cleanup: []
+  rationale: Exercises malformed body structure without assigning an undefined status.
+
+- id: LOGIN-AI-019
+  source: AI
+  title: Malformed JSON payload is handled safely
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [robustness_testing]
+  category: error-handling
+  priority: high
+  preconditions: []
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: "{\"email\":\"test@eshop.com\",\"password\":"}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not expose a stack trace, response does not contain a token]}
+  cleanup: []
+  rationale: Covers syntactically invalid JSON; the exact failure contract is undefined.
+
+- id: LOGIN-AI-020
+  source: AI
+  title: Extra role field cannot create elevated identity
+  requirements: [FR-02, FR-02-R5]
+  techniques: [mass_assignment_probe, cross_field_testing]
+  category: security
+  priority: high
+  preconditions: [A normal registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!", role: admin}}
+  expected: {status: 200, assertions: [response contains a JWT, returned identity and token do not gain admin role from the extra request field]}
+  cleanup: []
+  rationale: Tests a dangerous extra-field interaction while retaining the defined success path.
+
+- id: LOGIN-AI-021
+  source: AI
+  title: First consecutive incorrect password increments counter by one
+  requirements: [FR-02, FR-02-R1]
+  techniques: [state_transition_testing, boundary_value_analysis]
+  category: state
+  priority: high
+  preconditions: [A registered user is unlocked with failure count 0]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: WrongPass1!}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login fails, failure count becomes exactly 1, account remains eligible for login]}
+  cleanup: [Restore failure count to 0 and clear lock state]
+  rationale: Covers the lower state boundary and exact increment rule.
+
+- id: LOGIN-AI-022
+  source: AI
+  title: Second consecutive incorrect password increments counter to two
+  requirements: [FR-02, FR-02-R1, FR-02-R2]
+  techniques: [state_transition_testing, boundary_value_analysis]
+  category: state
+  priority: high
+  preconditions: [A registered user is unlocked with failure count 1]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: WrongPass2!}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login fails, failure count becomes exactly 2, account remains eligible for login]}
+  cleanup: [Restore failure count to 0 and clear lock state]
+  rationale: Covers the boundary immediately below lock activation.
+
+- id: LOGIN-AI-023
+  source: AI
+  title: Third consecutive incorrect password locks the account
+  requirements: [FR-02, FR-02-R1, FR-02-R2, FR-02-R3]
+  techniques: [state_transition_testing, boundary_value_analysis]
+  category: state
+  priority: high
+  preconditions: [A registered user is unlocked with failure count 2]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: WrongPass3!}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login fails, failure count becomes exactly 3, account enters a 30-second temporary lock]}
+  cleanup: [Restore failure count to 0 and clear lock state]
+  rationale: Covers the exact lock transition boundary.
+
+- id: LOGIN-AI-024
+  source: AI
+  title: Correct credentials are denied while account is locked
+  requirements: [FR-02, FR-02-R2, FR-02-R3, FR-02-R4]
+  techniques: [state_transition_testing]
+  category: state
+  priority: high
+  preconditions: [A registered user is within the documented 30-second lock interval]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login is not successful during the lock, response does not contain a token, error does not disclose credential-specific detail]}
+  cleanup: [Clear lock state after observation]
+  rationale: Verifies enforcement of the locked state even with correct credentials.
+
+- id: LOGIN-AI-025
+  source: AI
+  title: Login immediately before 30-second lock expiry remains denied
+  requirements: [FR-02, FR-02-R3]
+  techniques: [boundary_value_analysis, state_transition_testing]
+  category: boundary
+  priority: high
+  preconditions: [A registered user is locked, A controllable clock or precise lock setup is available]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [at a time strictly less than 30 seconds after lock activation login remains unsuccessful, response does not contain a token]}
+  cleanup: [Clear lock state]
+  rationale: Covers the lower side of the 30-second timeout boundary.
+
+- id: LOGIN-AI-026
+  source: AI
+  title: Login at the exact 30-second boundary is characterized
+  requirements: [FR-02, FR-02-R3, LOGIN-AMB-09]
+  techniques: [boundary_value_analysis, state_transition_testing]
+  category: boundary
+  priority: medium
+  preconditions: [A registered user is locked, A controllable clock or precise lock setup is available]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [observed behavior exactly at the nominal 30-second boundary is recorded with timing tolerance]}
+  cleanup: [Clear lock state]
+  rationale: The duration is defined but equality semantics and clock tolerance are not.
+
+- id: LOGIN-AI-027
+  source: AI
+  title: Correct login succeeds after lock duration has elapsed
+  requirements: [FR-02, FR-02-R3, FR-02-R5]
+  techniques: [state_transition_testing, boundary_value_analysis]
+  category: state
+  priority: high
+  preconditions: [A registered user was locked, More than 30 seconds have elapsed since lock activation]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: 200, assertions: [login succeeds after the lock duration, response contains a non-empty JWT token]}
+  cleanup: [Restore account to baseline]
+  rationale: Covers the transition out of the temporary lock.
+
+- id: LOGIN-AI-028
+  source: AI
+  title: Successful login after two failures has undefined counter reset behavior
+  requirements: [FR-02, FR-02-R5, LOGIN-AMB-07]
+  techniques: [state_transition_testing]
+  category: state
+  priority: high
+  preconditions: [A registered user is unlocked with failure count 2]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: 200, assertions: [login succeeds and returns a JWT, post-success failure-counter state is recorded as SPEC_UNDEFINED]}
+  cleanup: [Restore account to baseline]
+  rationale: Consecutive semantics suggest a reset, but the source does not explicitly define it.
+
+- id: LOGIN-AI-029
+  source: AI
+  title: Failed attempt during lock does not reveal credentials and lock effect is characterized
+  requirements: [FR-02, FR-02-R4, LOGIN-AMB-08]
+  techniques: [state_transition_testing]
+  category: state
+  priority: medium
+  preconditions: [A registered user is within the 30-second lock interval]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: WrongDuringLock1!}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login fails without credential-specific disclosure, counter and lock-extension effects are recorded as SPEC_UNDEFINED]}
+  cleanup: [Restore account to baseline]
+  rationale: Behavior of attempts during the lock is explicitly unresolved.
+
+- id: LOGIN-AI-030
+  source: AI
+  title: SQL injection probe in email cannot bypass authentication
+  requirements: [FR-02, SEC-05]
+  techniques: [sql_injection, security_testing]
+  category: security
+  priority: high
+  preconditions: [A registered user exists, The test database is isolated]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: "' OR 1=1 --", password: irrelevant}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login is not successful, response does not contain a token, response does not expose database or stack details]}
+  cleanup: []
+  rationale: Black-box probe provides indirect SEC-05 coverage without claiming implementation proof.
+
+- id: LOGIN-AI-031
+  source: AI
+  title: SQL injection probe in password cannot bypass authentication
+  requirements: [FR-02, SEC-05]
+  techniques: [sql_injection, security_testing]
+  category: security
+  priority: high
+  preconditions: [A registered user exists, The account is unlocked, The test database is isolated]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "' OR '1'='1"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [login is not successful, response does not contain a token, response does not expose database or stack details]}
+  cleanup: [Restore mutable account state]
+  rationale: Indirectly tests query safety for the other credential field.
+
+- id: LOGIN-AI-032
+  source: AI
+  title: Unknown email and wrong password failures do not enable enumeration
+  requirements: [FR-02, FR-02-R4]
+  techniques: [differential_testing, security_testing]
+  category: security
+  priority: high
+  preconditions: [A registered user exists, A definitely unregistered email is known, Account state is isolated]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: DefinitelyWrong1!}}
+  expected: {status: SPEC_UNDEFINED, assertions: [compare with unknown-email response and find no cause-specific difference in disclosed status/body fields, neither response contains a token]}
+  cleanup: [Restore mutable account state]
+  rationale: Directly tests FR-02 information-disclosure behavior across failure causes.
+
+- id: LOGIN-AI-033
+  source: AI
+  title: Successful response contains required top-level fields
+  requirements: [FR-02, FR-02-R5]
+  techniques: [schema_validation]
+  category: schema
+  priority: high
+  preconditions: [A registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: 200, assertions: [response is a JSON object, response contains token, response contains user, token is a string]}
+  cleanup: []
+  rationale: Validates only the response fields and token type explicitly defined by the API specification.
+
+- id: LOGIN-AI-034
+  source: AI
+  title: Successful token is structurally a JWT
+  requirements: [FR-02, FR-02-R5, LOGIN-AMB-06]
+  techniques: [schema_validation, token_inspection]
+  category: authentication
+  priority: high
+  preconditions: [A registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: 200, assertions: [token is a non-empty string with three dot-separated JWT segments, claims algorithm and expiration are not asserted because they are SPEC_UNDEFINED]}
+  cleanup: []
+  rationale: Confirms the defined JWT semantic while respecting undefined JWT details.
+
+- id: LOGIN-AI-035
+  source: AI
+  title: Successful response does not expose password
+  requirements: [FR-02, SEC-01]
+  techniques: [schema_validation, sensitive_data_exposure]
+  category: security
+  priority: high
+  preconditions: [A registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: 200, assertions: [response serialization contains no password field or submitted password value, token remains present]}
+  cleanup: []
+  rationale: Tests response exposure relevant to password security; storage compliance requires separate inspection.
+
+- id: LOGIN-AI-036
+  source: AI
+  title: Stored password is not plaintext
+  requirements: [SEC-01]
+  techniques: [security_inspection]
+  category: security
+  priority: high
+  preconditions: [Authorized read-only access to the isolated test database, A test user with known password exists]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  expected: {status: 200, assertions: [login succeeds, stored password representation is not equal to the known plaintext password]}
+  cleanup: []
+  rationale: SEC-01 is a storage property and cannot be proven by black-box response assertions alone.
+
+- id: LOGIN-AI-037
+  source: AI
+  title: Failure response contains no JWT or user object
+  requirements: [FR-02, FR-02-R4]
+  techniques: [schema_validation, security_testing]
+  category: schema
+  priority: high
+  preconditions: [A registered user exists, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: DefinitelyWrong1!}}
+  expected: {status: SPEC_UNDEFINED, assertions: [response contains no token, response contains no authenticated user object, response does not expose credential values]}
+  cleanup: [Restore mutable account state]
+  rationale: Validates safe negative-response shape without inventing its exact schema.
+
+- id: LOGIN-AI-038
+  source: AI
+  title: Duplicate JSON email key behavior is characterized without authentication bypass
+  requirements: [FR-02, SEC-05, LOGIN-AMB-05]
+  techniques: [parser_differential, cross_field_testing]
+  category: security
+  priority: medium
+  preconditions: [A registered user exists, Raw request-body control is available, Account state is isolated]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: "{\"email\":\"absent@example.test\",\"email\":\"test@eshop.com\",\"password\":\"WrongPass1!\"}"}
+  expected: {status: SPEC_UNDEFINED, assertions: [request does not bypass authentication, response does not contain a token, parser behavior is recorded because duplicate-key semantics are SPEC_UNDEFINED]}
+  cleanup: [Restore mutable account state if applicable]
+  rationale: Covers a meaningful parser/cross-field ambiguity rather than duplicating ordinary invalid credentials.

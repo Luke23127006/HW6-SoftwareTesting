@@ -1,0 +1,35 @@
+{
+  "test_count": 38,
+  "category_counts": {
+    "functional": 2,
+    "domain": 7,
+    "boundary": 4,
+    "state": 7,
+    "authentication": 1,
+    "authorization": 0,
+    "security": 8,
+    "schema": 2,
+    "error-handling": 7
+  },
+  "requirement_counts": {
+    "FR-02": 37,
+    "FR-02-R5": 7,
+    "FR-02-R4": 6,
+    "FR-02-R1": 5,
+    "LOGIN-AMB-04": 3,
+    "LOGIN-AMB-05": 12,
+    "FR-02-R2": 3,
+    "FR-02-R3": 5,
+    "LOGIN-AMB-09": 1,
+    "LOGIN-AMB-07": 1,
+    "LOGIN-AMB-08": 1,
+    "SEC-05": 3,
+    "LOGIN-AMB-06": 1,
+    "SEC-01": 2
+  },
+  "context_security_requirements": [
+    "SEC-01",
+    "SEC-05"
+  ],
+  "warnings": []
+}

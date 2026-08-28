@@ -67,37 +67,37 @@ Rules:
 
 ## 0.1 Read Context
 
-- [ ] Read `AGENTS.md`
-- [ ] Read `current_context.md`
-- [ ] Read `config/hw06.yaml`
-- [ ] Read `state/hw06-state.yaml`
+- [x] Read `AGENTS.md`
+- [x] Read `current_context.md`
+- [x] Read `config/hw06.yaml`
+- [x] Read `state/hw06-state.yaml`
 
 ## 0.2 Check Sources
 
 Confirm these files exist:
 
-- [ ] `requirements/req_en.md`
-- [ ] `requirements/req_vi.md`
-- [ ] `eshop-sut/api_specification.md`
-- [ ] `eshop-sut/README.md`
+- [x] `requirements/req_en.md`
+- [x] `requirements/req_vi.md`
+- [x] `eshop-sut/api_specification.md`
+- [x] `eshop-sut/README.md`
 
 ## 0.3 Check Agent Skills
 
 Confirm all exist:
 
-- [ ] `.agents/skills/hw06-orchestrator/SKILL.md`
-- [ ] `.agents/skills/api-spec-analyzer/SKILL.md`
-- [ ] `.agents/skills/api-test-generator/SKILL.md`
-- [ ] `.agents/skills/test-case-auditor/SKILL.md`
-- [ ] `.agents/skills/test-case-extender/SKILL.md`
-- [ ] `.agents/skills/postman-test-builder/SKILL.md`
-- [ ] `.agents/skills/test-result-analyzer/SKILL.md`
-- [ ] `.agents/skills/bug-report-writer/SKILL.md`
-- [ ] `.agents/skills/cicd-helper/SKILL.md`
-- [ ] `.agents/skills/report-writer/SKILL.md`
-- [ ] `.agents/skills/ai-critique-writer/SKILL.md`
-- [ ] `.agents/skills/submission-validator/SKILL.md`
-- [ ] `.agents/skills/audit-logger/SKILL.md`
+- [x] `.agents/skills/hw06-orchestrator/SKILL.md`
+- [x] `.agents/skills/api-spec-analyzer/SKILL.md`
+- [x] `.agents/skills/api-test-generator/SKILL.md`
+- [x] `.agents/skills/test-case-auditor/SKILL.md`
+- [x] `.agents/skills/test-case-extender/SKILL.md`
+- [x] `.agents/skills/postman-test-builder/SKILL.md`
+- [x] `.agents/skills/test-result-analyzer/SKILL.md`
+- [x] `.agents/skills/bug-report-writer/SKILL.md`
+- [x] `.agents/skills/cicd-helper/SKILL.md`
+- [x] `.agents/skills/report-writer/SKILL.md`
+- [x] `.agents/skills/ai-critique-writer/SKILL.md`
+- [x] `.agents/skills/submission-validator/SKILL.md`
+- [x] `.agents/skills/audit-logger/SKILL.md`
 
 ## 0.4 Check Python Support
 
@@ -129,10 +129,10 @@ exist.
 
 ## Exit Criteria
 
-- [ ] Sources found
-- [ ] Skills found
-- [ ] Python dependencies installed
-- [ ] Runtime folders ready
+- [x] Sources found
+- [x] Skills found
+- [x] Python dependencies installed
+- [x] Runtime folders ready
 
 Suggested commit:
 
@@ -161,11 +161,11 @@ eshop-sut/run_servers.bat
 
 Determine:
 
-- [ ] backend install command
-- [ ] backend start command
-- [ ] expected port
-- [ ] database initialization behavior
-- [ ] whether database state resets automatically
+- [x] backend install command
+- [x] backend start command
+- [x] expected port
+- [x] database initialization behavior
+- [x] whether database state resets automatically
 
 ## 1.2 Selected Endpoints
 
@@ -179,12 +179,12 @@ POST /api/admin/coupons
 
 Identify only practical test concerns:
 
-- [ ] required setup data
-- [ ] authentication flow
-- [ ] response shape
-- [ ] cleanup endpoints
-- [ ] mutable database state
-- [ ] whether tests can interfere with one another
+- [x] required setup data
+- [x] authentication flow
+- [x] response shape
+- [x] cleanup endpoints
+- [x] mutable database state
+- [x] whether tests can interfere with one another
 
 ## 1.3 Fixtures
 
@@ -226,19 +226,19 @@ login
 
 Create:
 
-- [ ] `tests/login/api-context.yaml`
-- [ ] `tests/login/traceability.md`
+- [x] `tests/login/api-context.yaml`
+- [x] `tests/login/traceability.md`
 
 Must capture:
 
-- [ ] request contract
-- [ ] success response
-- [ ] failed-login counter
-- [ ] 3-failure lock boundary
-- [ ] 30-second lock
-- [ ] relevant SEC requirements
-- [ ] setup dependencies
-- [ ] ambiguities
+- [x] request contract
+- [x] success response
+- [x] failed-login counter
+- [x] 3-failure lock boundary
+- [x] 30-second lock
+- [x] relevant SEC requirements
+- [x] setup dependencies
+- [x] ambiguities
 
 ## 2.2 Validate
 
@@ -258,9 +258,9 @@ login.spec_analysis = done
 
 ## Exit Criteria
 
-- [ ] context validates
-- [ ] no unsupported assumptions
-- [ ] traceability exists
+- [x] context validates
+- [x] no unsupported assumptions
+- [x] traceability exists
 
 Suggested commit:
 
@@ -282,15 +282,15 @@ api-test-generator
 
 Generate sequentially:
 
-- [ ] happy path
-- [ ] equivalence partitions
-- [ ] boundaries
-- [ ] authentication/security
-- [ ] state transitions
-- [ ] schema tests
-- [ ] error handling
-- [ ] cross-field cases
-- [ ] deduplicate
+- [x] happy path
+- [x] equivalence partitions
+- [x] boundaries
+- [x] authentication/security
+- [x] state transitions
+- [x] schema tests
+- [x] error handling
+- [x] cross-field cases
+- [x] deduplicate
 
 Target:
 
@@ -300,7 +300,7 @@ Target:
 
 Output:
 
-- [ ] `tests/login/generated-tests.yaml`
+- [x] `tests/login/generated-tests.yaml`
 
 ## 3.2 Coverage
 
@@ -313,8 +313,8 @@ python .agents/skills/api-test-generator/scripts/coverage_check.py tests/login/g
 
 Create:
 
-- [ ] `tests/login/coverage.json`
-- [ ] `tests/login/coverage.md`
+- [x] `tests/login/coverage.json`
+- [x] `tests/login/coverage.md`
 
 ## 3.3 Update State
 
@@ -327,10 +327,10 @@ login.generated_count = actual count
 
 ## Exit Criteria
 
-- [ ] > =35 meaningful tests
-- [ ] no duplicate IDs
-- [ ] meaningful state/security/schema coverage
-- [ ] coverage warnings reviewed
+- [x] > =35 meaningful tests
+- [x] no duplicate IDs
+- [x] meaningful state/security/schema coverage
+- [x] coverage warnings reviewed
 
 Suggested commit:
 
