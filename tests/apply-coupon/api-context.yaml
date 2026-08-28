@@ -1,0 +1,67 @@
+api:
+  id: apply_coupon
+  feature: FR-09
+  method: POST
+  path: /api/apply-coupon
+  authentication_required: true
+  authorization_required: authenticated_user
+  base_url: http://localhost:3000
+request:
+  content_type: application/json
+  headers:
+    required:
+      - {name: Authorization, format: "Bearer <valid JWT>"}
+  path_parameters: []
+  query_parameters: []
+  body:
+    required: true
+    fields:
+      - {name: code, required: true, type: string, constraints: "must identify an existing active coupon"}
+      - {name: total_amount, required: true, type: number, constraints: ">= coupon.min_order_amount"}
+      - {name: user_id, required: true, type: SPEC_UNDEFINED, constraints: "usage count for this user must be below max_uses_per_user"}
+responses:
+  success:
+    status: SPEC_UNDEFINED
+    content_type: application/json
+    body:
+      discount_amount: {required: true, type: number}
+      final_amount: {required: true, type: number}
+  failures:
+    status: SPEC_UNDEFINED
+    schema: SPEC_UNDEFINED
+business_rules:
+  - {id: FR-09-C1, description: "Coupon exists in the database and is active (is_active = 1).", source: "eshop-sut/README.md FR-09"}
+  - {id: FR-09-C2, description: "Current date is before expired_at.", source: "eshop-sut/README.md FR-09"}
+  - {id: FR-09-C3, description: "total_amount is greater than or equal to min_order_amount.", source: "eshop-sut/README.md FR-09"}
+  - {id: FR-09-C4, description: "User has a valid JWT token.", source: "eshop-sut/README.md FR-09"}
+  - {id: FR-09-C5, description: "User coupon usage count is less than max_uses_per_user.", source: "eshop-sut/README.md FR-09"}
+  - {id: FR-09-R1, description: "Percent discount_amount equals total_amount multiplied by discount_value divided by 100.", source: "eshop-sut/README.md FR-09"}
+  - {id: FR-09-R2, description: "Fixed discount_amount equals discount_value.", source: "eshop-sut/README.md FR-09"}
+  - {id: FR-09-R3, description: "final_amount equals total_amount minus discount_amount.", source: "eshop-sut/README.md FR-09"}
+states:
+  - {id: COUPON-STATE-01, from: "usage count below maximum", event: "coupon is used and usage is recorded", to: "usage count increases", source: FR-09-C5}
+  - {id: COUPON-STATE-02, from: "usage count max-1", event: "coupon is used and usage is recorded", to: "usage count equals maximum; later application is ineligible", source: FR-09-C5}
+security_requirements: [SEC-02, SEC-05]
+dependencies:
+  fixtures:
+    - {code: SAVE10, type: percent, discount_value: 10, min_order_amount: 300000, expired_at: 2099-12-31, max_uses_per_user: 1}
+    - {code: BIGBUY, type: fixed, discount_value: 50000, min_order_amount: 500000, expired_at: 2099-12-31, max_uses_per_user: 1}
+    - {code: VIP100, type: fixed, discount_value: 100000, min_order_amount: 300000, expired_at: 2099-12-31, max_uses_per_user: 2}
+    - {code: EXPIRED, type: percent, discount_value: 20, min_order_amount: 100000, expired_at: 2020-01-01, max_uses_per_user: 1}
+  setup: [Obtain a valid JWT, Use an isolated user and controllable coupon_usage records]
+  cleanup: [Remove coupon_usage rows created by state tests or reset the demo database]
+ambiguities:
+  - {id: COUPON-AMB-01, description: "Success and failure HTTP status codes are not specified."}
+  - {id: COUPON-AMB-02, description: "Failure response schemas and exact messages are not specified."}
+  - {id: COUPON-AMB-03, description: "The type, existence validation, and trust model for body user_id are not specified."}
+  - {id: COUPON-AMB-04, description: "Behavior when JWT identity differs from body user_id is not specified, though C4 requires authentication."}
+  - {id: COUPON-AMB-05, description: "Rounding rules for non-integral percentage results are not specified."}
+  - {id: COUPON-AMB-06, description: "Whether discount_amount may exceed total_amount and whether final_amount is floored at zero are not specified."}
+  - {id: COUPON-AMB-07, description: "Missing, null, wrong-type, negative, non-finite, and extra-field handling is not specified."}
+  - {id: COUPON-AMB-08, description: "Coupon code case-sensitivity and whitespace normalization are not specified."}
+  - {id: COUPON-AMB-09, description: "Expiration equality/timezone semantics at expired_at are not specified."}
+  - {id: COUPON-AMB-10, description: "Whether successful application itself records usage is not specified."}
+security_observations:
+  - "SEC-02 and C4 require a valid JWT; test missing, malformed, expired, and identity-mismatch cases."
+  - "SEC-05 is indirectly covered with code injection probes; black-box tests cannot prove query parameterization."
+

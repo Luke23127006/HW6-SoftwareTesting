@@ -1,0 +1,39 @@
+{
+  "test_count": 36,
+  "category_counts": {
+    "functional": 4,
+    "domain": 6,
+    "boundary": 7,
+    "state": 5,
+    "authentication": 3,
+    "authorization": 2,
+    "security": 1,
+    "schema": 2,
+    "error-handling": 6
+  },
+  "requirement_counts": {
+    "FR-09-C1": 11,
+    "FR-09-C2": 4,
+    "FR-09-C3": 9,
+    "FR-09-C4": 6,
+    "FR-09-C5": 10,
+    "FR-09-R1": 6,
+    "FR-09-R3": 8,
+    "FR-09-R2": 3,
+    "SEC-02": 3,
+    "COUPON-AMB-04": 1,
+    "COUPON-AMB-05": 1,
+    "COUPON-AMB-06": 1,
+    "COUPON-AMB-07": 7,
+    "COUPON-AMB-08": 2,
+    "COUPON-AMB-03": 2,
+    "SEC-05": 1,
+    "COUPON-AMB-09": 1,
+    "COUPON-AMB-10": 1
+  },
+  "context_security_requirements": [
+    "SEC-02",
+    "SEC-05"
+  ],
+  "warnings": []
+}

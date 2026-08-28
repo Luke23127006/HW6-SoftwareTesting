@@ -1,16 +1,16 @@
-# HUMAN GATE A1 — Review Login Tests
+# HUMAN GATE — Review Apply Coupon Tests
 
-**Gate ID:** LOGIN-AUDIT-01  
+**Gate ID:** APPLY-COUPON-AUDIT-01  
 **Status:** WAITING_FOR_HUMAN  
 **Decision:** PENDING
 
 ## Reason for stopping
 
-All 38 AI-generated Login tests require a final student-authored audit. Codex cannot supply or infer the final human verdicts, reasoning, or corrections.
+All 36 AI-generated Apply Coupon tests require a final student-authored audit. Codex cannot supply or infer the final human verdicts, reasoning, or corrections.
 
 ## Exact human task
 
-Review every record in `tests/login/audit.yaml` against the original test and authoritative context. For each of the 38 records, fill:
+Review every record in `tests/apply-coupon/audit.yaml` against the original test and authoritative context. For each record fill:
 
 ```yaml
 human_review:
@@ -18,43 +18,27 @@ human_review:
   reasoning: <your concrete human reasoning>
 ```
 
-For every `INVALID` or `INCOMPLETE` verdict, also fill:
-
-```yaml
-correction:
-  required: true
-  description: <the correction you approve>
-```
-
-For a `VALID` verdict, leave `correction.required: false`; no correction description is required.
-
-Do not alter `test_id` values and do not present AI suggestions as your human reasoning.
+For every `INVALID` or `INCOMPLETE` verdict also set `correction.required: true` and provide `correction.description`. For `VALID`, leave correction unnecessary.
 
 ## Files to review
 
-- `tests/login/generated-tests.yaml` — the 38 original AI tests
-- `tests/login/api-context.yaml` — normalized source-backed oracle and ambiguities
-- `tests/login/traceability.md` — requirement mapping
-- `tests/login/audit.yaml` — file you must complete
+- `tests/apply-coupon/generated-tests.yaml`
+- `tests/apply-coupon/api-context.yaml`
+- `tests/apply-coupon/traceability.md`
+- `tests/apply-coupon/audit.yaml`
 
-Pay special attention to tests whose expected status is `SPEC_UNDEFINED`, implementation-inspection test `LOGIN-AI-036`, timing feasibility, setup/cleanup feasibility, and whether each claimed technique matches the case.
+Pay special attention to `SPEC_UNDEFINED` statuses, JWT/body `user_id` mismatch, rounding, expiration equality, usage mutation timing, and whether each precondition is executable.
 
 ## Evidence required
 
-- All 38 `human_review.verdict` fields contain exactly `VALID`, `INVALID`, or `INCOMPLETE`.
-- All 38 `human_review.reasoning` fields contain substantive student reasoning.
-- Every `INVALID`/`INCOMPLETE` record contains a correction description.
-- The completed `tests/login/audit.yaml` is saved in the repository.
+- All 36 final verdicts are `VALID`, `INVALID`, or `INCOMPLETE`.
+- All 36 records contain substantive student reasoning.
+- Every invalid/incomplete case contains a correction description.
+- `tests/apply-coupon/audit.yaml` is saved.
 
 ## Completion fields
 
-After completing the audit, edit the top of this file:
-
-```text
-Decision: APPROVED
-```
-
-Use `MODIFIED` if you changed the proposed review material while completing it, or `REJECTED` if the audit scaffold should not proceed. Add any notes below.
+Set the overall `Decision` above to `APPROVED`, `MODIFIED`, or `REJECTED` and add notes:
 
 **Human notes:**
 
@@ -62,4 +46,4 @@ PENDING_HUMAN_ACTION
 
 ## Completion instructions
 
-Save both files, then ask Codex to continue. Codex will validate the audit, reject incomplete entries rather than guessing, apply only your confirmed decisions, update state/TODO/audit, archive this gate, and continue to the next prerequisite-safe phase.
+Save the files and ask Codex to continue. Codex will validate the audit, apply only your confirmed decisions, update state/TODO/audit, archive this gate, and proceed to the next prerequisite-safe task.

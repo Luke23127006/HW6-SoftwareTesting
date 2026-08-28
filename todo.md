@@ -400,7 +400,7 @@ python .agents/skills/test-case-auditor/scripts/validate_human_audit.py tests/lo
 
 Create:
 
-- [ ] `tests/login/audit.md`
+- [x] `tests/login/audit.md`
 - [ ] corrected AI tests if required
 
 ## 4.3 Update State
@@ -431,14 +431,14 @@ test-case-extender
 
 Create:
 
-- [ ] `tests/login/gap-analysis.md`
+- [x] `tests/login/gap-analysis.md`
 
 Codex identifies candidate gaps, especially:
 
-- [ ] security
-- [ ] state interactions
-- [ ] assumptions AI made incorrectly
-- [ ] hard-to-model setup
+- [x] security
+- [x] state interactions
+- [x] assumptions AI made incorrectly
+- [x] hard-to-model setup
 
 ---
 
@@ -461,8 +461,8 @@ human_confirmation: true
 
 Create:
 
-- [ ] `tests/login/human-tests.yaml`
-- [ ] `tests/login/final-tests.yaml`
+- [x] `tests/login/human-tests.yaml`
+- [x] `tests/login/final-tests.yaml`
 
 Run:
 
@@ -1213,3 +1213,29 @@ Then inspect the backend execution environment.
 Then run api-spec-analyzer for Login.
 Do not generate Login tests until api-context.yaml validates.
 ```
+
+# Phase 22 — Documentation & Submission
+
+- [ ] Validate `docs/report.md`
+- [ ] Ensure all 3 APIs contain:
+  - generation
+  - audit
+  - extension
+  - execution
+  - bugs
+- [ ] Finalize `docs/ai-audit.md`
+- [ ] Write `docs/ai-critique.md` (200–300 words)
+- [ ] Finalize `docs/cicd-report.md`
+- [ ] Finalize `docs/bug-report.md`
+- [ ] Generate/update `docs/test-summary.md`
+- [ ] Export test cases to Excel
+- [ ] Generate `git-commit-log.txt`
+- [ ] Update README self-assessment table
+- [ ] Check Newman HTML report
+- [ ] Check Postman collection/environment files
+- [ ] Check generator pseudocode
+- [ ] HUMAN GATE — verify self-drawn generator diagram
+- [ ] HUMAN GATE — final submission review
+- [ ] Convert required Markdown reports to PDF
+- [ ] Build final submission folder
+- [ ] Validate submission completeness against HW06 requirements

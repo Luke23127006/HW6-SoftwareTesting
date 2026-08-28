@@ -148,3 +148,27 @@ The orchestrator must:
 
 Never bypass a HUMAN GATE because sufficient information appears
 inferable from existing artifacts.
+
+## Documentation Policy
+
+Documentation is a continuous deliverable, not a final-phase task.
+
+After completing any meaningful HW06 task, update all affected
+documentation before continuing.
+
+Artifacts remain the source of truth.
+Documentation must summarize existing artifacts and evidence and
+must never invent missing execution results.
+
+At minimum, consider whether the following require updates:
+
+- docs/report.md
+- docs/ai-audit.md
+- docs/test-summary.md
+- docs/bug-report.md
+- docs/cicd-report.md
+- state/hw06-state.yaml
+- todo.md
+- README.md
+
+Do not postpone all documentation until the final phase.

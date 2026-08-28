@@ -1,0 +1,104 @@
+- id: LOGIN-HUMAN-001
+  source: HUMAN
+  human_confirmation: true
+  title: Lockout remains isolated to the locked account
+  requirements: [FR-02, FR-02-R2, FR-02-R3]
+  techniques: [state_transition_testing, cross_user_testing]
+  category: state
+  priority: high
+  preconditions: [Two distinct registered users A and B are unlocked, User A has controllable failure state]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: user-b@example.test, password: "UserBPass1!"}}
+  expected: {status: 200, assertions: [after user A is locked by three consecutive failures user B can still log in, response contains a JWT for user B, user A remains locked during its lock interval]}
+  cleanup: [Restore both users to unlocked baseline state]
+  rationale: Verifies that account lock state is not accidentally global or shared across identities.
+  why_ai_missed: {category: STATE_COMPLEXITY, explanation: The initial AI suite modeled the lockout state machine for only one account and did not test cross-account isolation.}
+
+- id: LOGIN-HUMAN-002
+  source: HUMAN
+  human_confirmation: true
+  title: Unknown-email failures do not mutate an existing user's lock state
+  requirements: [FR-02, FR-02-R1, FR-02-R4]
+  techniques: [state_transition_testing, cross_field_testing]
+  category: state
+  priority: high
+  preconditions: [An existing user is unlocked with zero failures, absent-state-probe@example.test is unregistered]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: existing@example.test, password: "ExistingPass1!"}}
+  expected: {status: 200, assertions: [after three failed attempts for the unregistered email the existing user's correct login succeeds, response contains a JWT, existing user's failure and lock state were not changed by the unknown-email attempts]}
+  cleanup: [Restore the existing user to baseline]
+  rationale: Connects identity resolution with counter ownership to detect cross-account state corruption.
+  why_ai_missed: {category: CROSS_FIELD_INTERACTION, explanation: The initial suite tested unknown-email rejection and account counters independently rather than combining identity lookup with persisted state.}
+
+- id: LOGIN-HUMAN-003
+  source: HUMAN
+  human_confirmation: true
+  title: Concurrent failed logins preserve exact increment and lock semantics
+  requirements: [FR-02, FR-02-R1, FR-02-R2]
+  techniques: [concurrency_testing, state_transition_testing]
+  category: state
+  priority: high
+  preconditions: [A dedicated registered user is unlocked with failure count 0, The runner can synchronize parallel requests, Authoritative state inspection is available]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: concurrent@example.test, password: WrongConcurrent1!}}
+  expected: {status: SPEC_UNDEFINED, assertions: [each completed failed request contributes exactly one counter increment, three completed consecutive failures result in a locked account, no increment is lost or multiplied by a race]}
+  cleanup: [Restore failure count to 0 and clear lock state]
+  rationale: Exercises the exact increment rule under a race that sequential state tests cannot expose.
+  why_ai_missed: {category: STATE_COMPLEXITY, explanation: The initial transition model was sequential and did not account for concurrent database updates.}
+
+- id: LOGIN-HUMAN-004
+  source: HUMAN
+  human_confirmation: true
+  title: During-lock attempts characterize fixed versus sliding expiration
+  requirements: [FR-02, FR-02-R3, LOGIN-AMB-08]
+  techniques: [state_transition_testing, boundary_value_analysis]
+  category: state
+  priority: medium
+  preconditions: [A dedicated user has just entered the 30-second lock, Precise timing is available]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: locked@example.test, password: "CorrectPass1!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [make additional attempts during the lock, retry just after 30 seconds from original activation, record whether expiration is fixed or extended without declaring an unspecified behavior defective]}
+  cleanup: [Restore account to unlocked baseline]
+  rationale: Distinguishes two implementations of an explicitly ambiguous during-lock behavior.
+  why_ai_missed: {category: SPEC_AMBIGUITY, explanation: The source defines a duration but not whether attempts during the lock restart or extend that duration.}
+
+- id: LOGIN-HUMAN-005
+  source: HUMAN
+  human_confirmation: true
+  title: Oversized credentials fail safely
+  requirements: [FR-02, FR-02-R4, LOGIN-AMB-05]
+  techniques: [robustness_testing, boundary_value_analysis]
+  category: security
+  priority: medium
+  preconditions: [The runner records exact large payload sizes, Test account state is isolated]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: "<very-large-string>@example.test", password: "<very-large-string>"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [server returns a controlled response, response does not expose internal details, response does not contain a token, service remains responsive after the request]}
+  cleanup: [Restore mutable account state if applicable]
+  rationale: Covers an upper-size robustness partition absent because the specification defines no maximum length.
+  why_ai_missed: {category: SPEC_AMBIGUITY, explanation: Without documented maximum lengths the initial boundary pass covered empty values but omitted a practical oversized-input partition.}
+
+- id: LOGIN-HUMAN-006
+  source: HUMAN
+  human_confirmation: true
+  title: Non-JSON content types cannot authenticate accidentally
+  requirements: [FR-02, LOGIN-AMB-05]
+  techniques: [protocol_testing, equivalence_partitioning]
+  category: error-handling
+  priority: medium
+  preconditions: [A registered user exists and is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: text/plain}, body: "email=test@eshop.com&password=Test1234!"}
+  expected: {status: SPEC_UNDEFINED, assertions: [request does not authenticate accidentally, response does not contain a token, server returns a controlled response without internal details]}
+  cleanup: [Restore mutable account state if applicable]
+  rationale: Varies the transport representation instead of only values after JSON parsing.
+  why_ai_missed: {category: API_CHARACTERISTIC, explanation: The initial partitions assumed the documented JSON parser path and did not vary request content type.}
+
+- id: LOGIN-HUMAN-007
+  source: HUMAN
+  human_confirmation: true
+  title: Unicode-confusable email does not resolve to a different identity
+  requirements: [FR-02, FR-02-R4, LOGIN-AMB-04]
+  techniques: [internationalization_testing, security_testing]
+  category: security
+  priority: medium
+  preconditions: [An ASCII-email account exists, Exact Unicode code points used in the probe are recorded, The account is unlocked]
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: "teѕt@eshop.com", password: "Test1234!"}}
+  expected: {status: SPEC_UNDEFINED, assertions: [a visually confusable but different identifier does not receive the ASCII account's JWT, response does not disclose whether either identity exists, normalization behavior is recorded]}
+  cleanup: [Restore mutable account state if applicable]
+  rationale: Adds an adversarial internationalization case beyond ASCII case and whitespace variants.
+  why_ai_missed: {category: SECURITY_CONTEXT, explanation: Unicode confusables require an internationalized identity-threat perspective absent from the initial prompt passes.}

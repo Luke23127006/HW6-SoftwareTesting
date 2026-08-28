@@ -139,3 +139,146 @@ Prepared the mandatory Login human-audit scaffold with 38 records matching all g
 
 `NOT_RETAINED`
 
+## AI-006
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-28 23:56:29 +07
+
+### Prompt
+
+```text
+the reason is it all meet the requirements, I approved all
+
+continue todo
+```
+
+### AI Response Summary
+
+Applied the student's explicit human decision to all 38 Login audit records: verdict VALID with the verbatim reasoning “It all meets the requirements.” The mandatory validator completed successfully with 38 VALID, 0 INVALID, and 0 INCOMPLETE. Created the human audit summary, marked login.human_audit done, archived HUMAN GATE A1, marked the audit summary TODO complete, and reset tmp.md.
+
+### Artifacts
+
+- `tests/login/audit.yaml`
+- `tests/login/audit.md`
+- `state/hw06-state.yaml`
+- `todo.md`
+- `ai-logs/human-gates/LOGIN-AUDIT-01.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-007
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-28 23:57:43 +07
+
+### Prompt
+
+```text
+the reason is it all meet the requirements, I approved all
+
+continue todo
+```
+
+### AI Response Summary
+
+After completing and archiving the Login human audit, performed the Phase 5 post-audit gap analysis. Proposed seven distinct candidate tests covering cross-account lock isolation, unknown-email state isolation, concurrent failed-attempt races, fixed versus sliding lock expiration, oversized credentials, content-type mismatches, and Unicode-confusable identities. Marked only the gap-analysis preparation complete; no candidate was labeled HUMAN or confirmed on the student's behalf.
+
+### Artifacts
+
+- `tests/login/gap-analysis.md`
+- `todo.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-008
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:01:51 +07
+
+### Prompt
+
+```text
+I approve all, it's all good, continur
+```
+
+### AI Response Summary
+
+Applied the student's explicit acceptance of all seven Login extension candidates. Created and validated seven source HUMAN tests with human_confirmation true, assembled a 45-case final Login suite containing 38 approved AI tests and seven confirmed human tests, verified zero duplicate IDs and zero schema errors, updated Login human-added state to seven, completed the corresponding TODO items, archived HUMAN GATE A2, and reset tmp.md.
+
+### Artifacts
+
+- `tests/login/human-tests.yaml`
+- `tests/login/final-tests.yaml`
+- `state/hw06-state.yaml`
+- `todo.md`
+- `ai-logs/human-gates/LOGIN-EXTEND-01.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-009
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:03:21 +07
+
+### Prompt
+
+```text
+I approve all, it's all good, continur
+```
+
+### AI Response Summary
+
+Completed and validated the Apply Coupon specification analysis for POST /api/apply-coupon. Created the structured context and traceability mapping for C1 through C5, fixed and percent formulas, final amount, JWT and SEC requirements, sample coupon fixtures, usage-state dependencies, and ten explicit specification ambiguities. Updated apply_coupon.spec_analysis to done.
+
+### Artifacts
+
+- `tests/apply-coupon/api-context.yaml`
+- `tests/apply-coupon/traceability.md`
+- `state/hw06-state.yaml`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-010
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:06:10 +07
+
+### Prompt
+
+```text
+I approve all, it's all good, continur
+```
+
+### AI Response Summary
+
+Generated and validated 36 Apply Coupon AI tests covering C1 through C5, min-1/min/min+1 boundaries, percent and fixed calculations, valid/missing/malformed/expired JWT behavior, JWT versus body user identity, usage-limit state, malformed fields, SQL injection, expiration and rounding ambiguities, and response schema. Coverage reported no warnings. Updated Apply Coupon generation state/count and prepared a 36-record human-audit scaffold without populating human decisions.
+
+### Artifacts
+
+- `tests/apply-coupon/generated-tests.yaml`
+- `tests/apply-coupon/coverage.json`
+- `tests/apply-coupon/coverage.md`
+- `tests/apply-coupon/audit.yaml`
+- `state/hw06-state.yaml`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
