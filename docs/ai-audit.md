@@ -398,3 +398,60 @@ Completed and validated Admin Create Coupon specification analysis and generated
 
 `NOT_RETAINED`
 
+## AI-015
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:41:29 +07
+
+### Prompt
+
+```text
+All tests meet FR-12, FR-17, and relevant
+  security requirements while preserving SPEC_UNDEFINED behavior.
+continue
+```
+
+### AI Response Summary
+
+Applied the student's exact reasoning and VALID verdict to all 36 Admin Create Coupon audit records. The human-audit validator completed with 36 VALID, 0 INVALID, and 0 INCOMPLETE. Created the audit summary, marked admin_create_coupon.human_audit done, archived ADMIN-COUPON-AUDIT-01, and reset tmp.md.
+
+### Artifacts
+
+- `tests/admin-create-coupon/audit.yaml`
+- `tests/admin-create-coupon/audit.md`
+- `state/hw06-state.yaml`
+- `ai-logs/human-gates/ADMIN-COUPON-AUDIT-01.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-016
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:42:10 +07
+
+### Prompt
+
+```text
+All tests meet FR-12, FR-17, and relevant
+  security requirements while preserving SPEC_UNDEFINED behavior.
+continue
+```
+
+### AI Response Summary
+
+Prepared the Admin Create Coupon post-audit gap analysis with seven distinct candidates covering whitespace-normalized uniqueness, Unicode-confusable codes, concurrent admin/user requests, post-issuance role changes, fractional monetary interactions, extreme numeric values, and cleanup isolation. No candidate was labeled HUMAN or confirmed for the student; a human selection gate is required.
+
+### Artifacts
+
+- `tests/admin-create-coupon/gap-analysis.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+

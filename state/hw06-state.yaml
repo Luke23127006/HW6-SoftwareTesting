@@ -20,7 +20,7 @@ admin_create_coupon:
   spec_analysis: done
   ai_generation: done
   generated_count: 36
-  human_audit: pending
+  human_audit: done
   human_added_count: 0
   postman: pending
   execution: pending
