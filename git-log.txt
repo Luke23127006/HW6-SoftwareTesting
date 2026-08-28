@@ -1,0 +1,3 @@
+# Replace this placeholder before submission.
+# Recommended command:
+# git log --oneline --decorate --all > git-log.txt

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HW06 API Context",
+  "type": "object",
+  "required": [
+    "api",
+    "request",
+    "responses",
+    "business_rules",
+    "states",
+    "security_requirements",
+    "dependencies",
+    "ambiguities"
+  ],
+  "properties": {
+    "api": {
+      "type": "object",
+      "required": ["id", "feature", "method", "path", "authentication_required"],
+      "properties": {
+        "id": { "type": "string" },
+        "feature": { "type": "string" },
+        "method": { "type": "string" },
+        "path": { "type": "string" },
+        "authentication_required": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "request": { "type": "object" },
+    "responses": { "type": "object" },
+    "business_rules": { "type": "array" },
+    "states": { "type": "array" },
+    "security_requirements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "dependencies": { "type": "object" },
+    "ambiguities": { "type": "array" },
+    "security_observations": { "type": "array" }
+  },
+  "additionalProperties": true
+}

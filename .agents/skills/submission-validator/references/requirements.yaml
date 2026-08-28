@@ -1,0 +1,39 @@
+required_files:
+  - README.md
+  - docs/report.md
+  - docs/report.pdf
+  - docs/ai-audit.md
+  - docs/ai-audit.pdf
+  - docs/ai-critique.md
+  - docs/cicd-report.md
+  - docs/test-summary.md
+  - postman/HW06.postman_collection.json
+  - reports/newman/report.html
+  - git-log.txt
+  - generator/pseudocode.md
+
+required_any:
+  - label: self-drawn generator diagram
+    paths:
+      - generator/diagram.png
+      - generator/diagram.jpg
+      - generator/diagram.jpeg
+      - generator/diagram.pdf
+      - generator/diagram.md
+
+apis:
+  login:
+    folder: tests/login
+  apply_coupon:
+    folder: tests/apply-coupon
+  admin_create_coupon:
+    folder: tests/admin-create-coupon
+
+min_ai_tests_per_api: 35
+min_human_tests_per_api: 5
+
+required_evidence:
+  student_header_screenshot: true
+  newman_html_report: true
+  cicd_pass_run: true
+  cicd_fail_run: true

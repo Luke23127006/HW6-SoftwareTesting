@@ -1,0 +1,37 @@
+assignment:
+  id: HW06-AI
+  min_ai_tests_per_api: 35
+  min_human_tests_per_api: 5
+
+student:
+  id: CHANGE_ME
+
+sut:
+  base_url: http://localhost:3000
+
+audit:
+  tool: ChatGPT
+  model: GPT-5.6 Sol
+  store_full_output: false
+
+apis:
+  login:
+    pool: A
+    feature: FR-02
+    name: Login
+    method: POST
+    path: /api/login
+
+  apply_coupon:
+    pool: B
+    feature: FR-09
+    name: Apply Coupon
+    method: POST
+    path: /api/apply-coupon
+
+  admin_create_coupon:
+    pool: C
+    feature: FR-17
+    name: Admin Create Coupon
+    method: POST
+    path: /api/admin/coupons

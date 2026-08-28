@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HW06 Workflow State",
+  "type": "object",
+  "required": ["login", "apply_coupon", "admin_create_coupon", "global"],
+  "properties": {
+    "login": { "$ref": "#/$defs/apiState" },
+    "apply_coupon": { "$ref": "#/$defs/apiState" },
+    "admin_create_coupon": { "$ref": "#/$defs/apiState" },
+    "global": { "type": "object" }
+  },
+  "$defs": {
+    "apiState": {
+      "type": "object",
+      "required": [
+        "spec_analysis",
+        "ai_generation",
+        "generated_count",
+        "human_audit",
+        "human_added_count",
+        "postman",
+        "execution",
+        "bugs"
+      ],
+      "properties": {
+        "spec_analysis": { "enum": ["pending", "in_progress", "done", "blocked"] },
+        "ai_generation": { "enum": ["pending", "in_progress", "done", "blocked"] },
+        "generated_count": { "type": "integer", "minimum": 0 },
+        "human_audit": { "enum": ["pending", "in_progress", "done", "blocked"] },
+        "human_added_count": { "type": "integer", "minimum": 0 },
+        "postman": { "enum": ["pending", "in_progress", "done", "blocked"] },
+        "execution": { "enum": ["pending", "in_progress", "done", "blocked"] },
+        "bugs": { "enum": ["pending", "in_progress", "done", "blocked"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

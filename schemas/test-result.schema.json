@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HW06 Test Result",
+  "type": "object",
+  "required": ["test_id", "status", "classification", "needs_human_confirmation"],
+  "properties": {
+    "test_id": { "type": "string" },
+    "status": { "enum": ["PASS", "FAIL", "SKIPPED"] },
+    "classification": {
+      "enum": [
+        "NONE",
+        "SUT_BUG_CANDIDATE",
+        "TEST_DEFECT",
+        "ENVIRONMENT_FAILURE",
+        "SPECIFICATION_GAP",
+        "DATA_SETUP_FAILURE"
+      ]
+    },
+    "expected": {},
+    "actual": {},
+    "evidence": { "type": "object" },
+    "needs_human_confirmation": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,59 @@
+name: HW06 API Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Install SUT dependencies
+        working-directory: ./eshop-sut
+        run: npm ci
+
+      - name: Start SUT
+        working-directory: ./eshop-sut
+        run: |
+          npm start > ../sut.log 2>&1 &
+
+      - name: Wait for SUT
+        run: |
+          for i in {1..30}; do
+            if curl --silent --fail http://localhost:3000 > /dev/null; then
+              echo "SUT is ready"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "SUT did not become ready"
+          cat sut.log || true
+          exit 1
+
+      - name: Run Newman
+        run: |
+          mkdir -p reports/newman
+          newman run postman/HW06.postman_collection.json \
+            -e postman/local.postman_environment.json \
+            -r cli,json,htmlextra \
+            --reporter-json-export reports/newman/report.json \
+            --reporter-htmlextra-export reports/newman/report.html
+
+      - name: Upload Newman report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-report
+          path: reports/newman/

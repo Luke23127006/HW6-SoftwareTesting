@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HW06 Test Case",
+  "type": "object",
+  "required": [
+    "id",
+    "source",
+    "title",
+    "requirements",
+    "techniques",
+    "category",
+    "priority",
+    "preconditions",
+    "request",
+    "expected",
+    "rationale"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "source": { "enum": ["AI", "HUMAN"] },
+    "title": { "type": "string", "minLength": 1 },
+    "requirements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "techniques": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "category": {
+      "enum": [
+        "functional",
+        "domain",
+        "boundary",
+        "state",
+        "authentication",
+        "authorization",
+        "security",
+        "schema",
+        "error-handling"
+      ]
+    },
+    "priority": { "enum": ["high", "medium", "low"] },
+    "preconditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "request": {
+      "type": "object",
+      "required": ["method", "path", "headers"],
+      "properties": {
+        "method": { "type": "string" },
+        "path": { "type": "string" },
+        "headers": { "type": "object" },
+        "query": { "type": "object" },
+        "body": {}
+      },
+      "additionalProperties": true
+    },
+    "expected": {
+      "type": "object",
+      "required": ["status", "assertions"],
+      "properties": {
+        "status": {},
+        "assertions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "cleanup": { "type": "array" },
+    "rationale": { "type": "string" },
+    "why_ai_missed": {
+      "type": "object",
+      "properties": {
+        "category": { "type": "string" },
+        "explanation": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "human_confirmation": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}
