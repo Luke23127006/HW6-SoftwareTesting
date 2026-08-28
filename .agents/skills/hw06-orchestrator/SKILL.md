@@ -126,3 +126,25 @@ If a prerequisite is missing, mark the dependent step `blocked` and explain exac
 4. If the source material does not define a value, write `SPEC_UNDEFINED` or record an ambiguity instead of guessing.
 5. After completing an HW06-related user request, follow the root `AGENTS.md` audit rule and append an AI Audit entry.
 
+## Human-in-the-Loop Protocol
+
+Whenever the current TODO task reaches a `HUMAN GATE`,
+delegate gate handling to `human-gate-manager`.
+
+The orchestrator must:
+
+1. finish all automatable work before the gate;
+2. invoke the human gate protocol;
+3. create `tmp.md`;
+4. stop immediately;
+5. wait for explicit human completion;
+6. on resume, validate the human response and evidence;
+7. update artifacts;
+8. update `todo.md`;
+9. update `state/hw06-state.yaml`;
+10. append AI audit;
+11. archive the completed gate;
+12. continue with the next TODO item.
+
+Never bypass a HUMAN GATE because sufficient information appears
+inferable from existing artifacts.

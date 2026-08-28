@@ -18,6 +18,49 @@ Rules:
 5. Stop and ask the student only at explicit `HUMAN GATE` steps.
 6. Never fabricate execution or evidence.
 
+## Human-in-the-Loop Rules
+
+1. Work from top to bottom unless a task explicitly allows parallel work.
+
+2. Automate everything that does not require genuine human judgment
+   or real-world evidence.
+
+3. At every `HUMAN GATE`:
+   - finish all safe preparation;
+   - use `human-gate-manager`;
+   - create/update root `tmp.md`;
+   - set the gate to `WAITING_FOR_HUMAN`;
+   - STOP.
+
+4. Do not mark a HUMAN GATE complete until:
+   - `tmp.md` contains an explicit human decision;
+   - required evidence exists;
+   - the decision/evidence has been validated.
+
+5. After resolving a HUMAN GATE:
+   - apply the human decision;
+   - validate the affected artifact;
+   - update this `todo.md`;
+   - update `state/hw06-state.yaml`;
+   - append `docs/ai-audit.md`;
+   - archive the gate under `ai-logs/human-gates/`;
+   - reset `tmp.md`;
+   - continue.
+
+6. Never fabricate:
+   - human approval;
+   - screenshots;
+   - execution evidence;
+   - URLs;
+   - commit hashes;
+   - issue numbers;
+   - actual responses;
+   - human-authored tests;
+   - human audit verdicts.
+
+7. If human information is incomplete, keep the gate pending.
+   Do not guess.
+
 ---
 
 # Phase 0 — Verify Repository Setup
@@ -284,7 +327,7 @@ login.generated_count = actual count
 
 ## Exit Criteria
 
-- [ ] >=35 meaningful tests
+- [ ] > =35 meaningful tests
 - [ ] no duplicate IDs
 - [ ] meaningful state/security/schema coverage
 - [ ] coverage warnings reviewed

@@ -631,3 +631,38 @@ At the end of every meaningful step:
 ```
 
 Use small Git commits because the assignment expects workflow history.
+
+## Human-in-the-Loop Workflow
+
+The project uses:
+
+`tmp.md`
+
+as the active human-action inbox.
+
+When Codex reaches a `HUMAN GATE`:
+
+```text
+Codex preparation
+→ tmp.md
+→ STOP
+→ student action / review / evidence
+→ student updates tmp.md
+→ Codex resumes
+→ validate
+→ update artifacts
+→ update todo/state/audit
+→ archive gate
+→ continue
+
+Completed gates are archived under:
+
+ai-logs/human-gates/
+
+Use:
+
+.agents/skills/human-gate-manager/SKILL.md
+
+for all human checkpoints.
+
+A pending human gate blocks all dependent tasks.
