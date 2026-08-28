@@ -21,13 +21,13 @@ jobs:
         run: npm install -g newman newman-reporter-htmlextra
 
       - name: Install SUT dependencies
-        working-directory: ./eshop-sut
+        working-directory: ./eshop-sut/backend
         run: npm ci
 
       - name: Start SUT
-        working-directory: ./eshop-sut
+        working-directory: ./eshop-sut/backend
         run: |
-          npm start > ../sut.log 2>&1 &
+          node server.js > ../../sut.log 2>&1 &
 
       - name: Wait for SUT
         run: |
@@ -36,8 +36,11 @@ jobs:
               echo "SUT is ready"
               exit 0
             fi
+
+            echo "Waiting for SUT... ($i/30)"
             sleep 2
           done
+
           echo "SUT did not become ready"
           cat sut.log || true
           exit 1
@@ -45,6 +48,7 @@ jobs:
       - name: Run Newman
         run: |
           mkdir -p reports/newman
+
           newman run postman/HW06.postman_collection.json \
             -e postman/local.postman_environment.json \
             -r cli,json,htmlextra \
