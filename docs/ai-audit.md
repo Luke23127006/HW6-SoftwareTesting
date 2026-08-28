@@ -282,3 +282,60 @@ Generated and validated 36 Apply Coupon AI tests covering C1 through C5, min-1/m
 
 `NOT_RETAINED`
 
+## AI-011
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:24:25 +07
+
+### Prompt
+
+```text
+All tests meet the documented requirements
+  and preserve SPEC_UNDEFINED where behavior is unspecified.
+continue
+```
+
+### AI Response Summary
+
+Applied the student's exact reasoning and VALID verdict to all 36 Apply Coupon audit records. The human-audit validator completed with 36 VALID, 0 INVALID, and 0 INCOMPLETE. Created the audit summary, marked apply_coupon.human_audit done, archived APPLY-COUPON-AUDIT-01, and reset tmp.md.
+
+### Artifacts
+
+- `tests/apply-coupon/audit.yaml`
+- `tests/apply-coupon/audit.md`
+- `state/hw06-state.yaml`
+- `ai-logs/human-gates/APPLY-COUPON-AUDIT-01.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-012
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 00:25:17 +07
+
+### Prompt
+
+```text
+All tests meet the documented requirements
+  and preserve SPEC_UNDEFINED where behavior is unspecified.
+continue
+```
+
+### AI Response Summary
+
+Prepared the Apply Coupon post-audit gap analysis with seven distinct extension candidates: cross-user usage isolation, concurrent final-allowance races, very large numeric totals, fractional monetary totals, deleted/deactivated JWT subjects, duplicate user_id JSON keys, and coupon-deactivation races. No candidate was labeled HUMAN or confirmed on the student's behalf; a human selection gate is required.
+
+### Artifacts
+
+- `tests/apply-coupon/gap-analysis.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+

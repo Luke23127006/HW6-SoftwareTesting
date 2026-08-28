@@ -1,49 +1,44 @@
-# HUMAN GATE — Review Apply Coupon Tests
+# HUMAN GATE — Select Apply Coupon Human Tests
 
-**Gate ID:** APPLY-COUPON-AUDIT-01  
+**Gate ID:** APPLY-COUPON-EXTEND-01  
 **Status:** WAITING_FOR_HUMAN  
-**Decision:** PENDING
+**Decision:** ACCEPT
 
 ## Reason for stopping
 
-All 36 AI-generated Apply Coupon tests require a final student-authored audit. Codex cannot supply or infer the final human verdicts, reasoning, or corrections.
+At least five student-owned Apply Coupon tests are required. Codex proposed seven gaps but cannot claim student authorship or set `human_confirmation: true` without explicit selection.
 
 ## Exact human task
 
-Review every record in `tests/apply-coupon/audit.yaml` against the original test and authoritative context. For each record fill:
+Review `tests/apply-coupon/gap-analysis.md`. Mark every candidate `ACCEPT`, `MODIFY`, or `REJECT`; accept or modify at least five. Describe exact changes for every `MODIFY`.
 
-```yaml
-human_review:
-  verdict: VALID | INVALID | INCOMPLETE
-  reasoning: <your concrete human reasoning>
-```
-
-For every `INVALID` or `INCOMPLETE` verdict also set `correction.required: true` and provide `correction.description`. For `VALID`, leave correction unnecessary.
+| Candidate | Decision |
+| --- | --- |
+| APPLY-CAND-01 — Usage limit isolated per user | ACCEPT |
+| APPLY-CAND-02 — Concurrent final-allowance applications | ACCEPT |
+| APPLY-CAND-03 — Very large total arithmetic | ACCEPT |
+| APPLY-CAND-04 — Fractional monetary total | ACCEPT |
+| APPLY-CAND-05 — JWT subject deleted/deactivated | ACCEPT |
+| APPLY-CAND-06 — Duplicate `user_id` JSON keys | ACCEPT |
+| APPLY-CAND-07 — Coupon deactivation race | ACCEPT |
 
 ## Files to review
 
+- `tests/apply-coupon/gap-analysis.md`
 - `tests/apply-coupon/generated-tests.yaml`
 - `tests/apply-coupon/api-context.yaml`
-- `tests/apply-coupon/traceability.md`
-- `tests/apply-coupon/audit.yaml`
-
-Pay special attention to `SPEC_UNDEFINED` statuses, JWT/body `user_id` mismatch, rounding, expiration equality, usage mutation timing, and whether each precondition is executable.
 
 ## Evidence required
 
-- All 36 final verdicts are `VALID`, `INVALID`, or `INCOMPLETE`.
-- All 36 records contain substantive student reasoning.
-- Every invalid/incomplete case contains a correction description.
-- `tests/apply-coupon/audit.yaml` is saved.
-
-## Completion fields
-
-Set the overall `Decision` above to `APPROVED`, `MODIFIED`, or `REJECTED` and add notes:
+- Explicit decision for all seven candidates.
+- At least five accepted or modified cases.
+- Exact instructions for modifications.
+- Overall `Decision` set to `APPROVED`, `MODIFIED`, or `REJECTED`.
 
 **Human notes:**
 
-PENDING_HUMAN_ACTION
+APPROVED
 
 ## Completion instructions
 
-Save the files and ask Codex to continue. Codex will validate the audit, apply only your confirmed decisions, update state/TODO/audit, archive this gate, and proceed to the next prerequisite-safe task.
+Save this file and ask Codex to continue. Codex will persist only accepted/modified cases, validate them, assemble the final Apply Coupon suite, update state/TODO/audit, archive this gate, and continue.
