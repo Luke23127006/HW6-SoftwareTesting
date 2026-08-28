@@ -4,7 +4,7 @@ assignment:
   min_human_tests_per_api: 5
 
 student:
-  id: CHANGE_ME
+  id: 23127006
 
 sut:
   base_url: http://localhost:3000

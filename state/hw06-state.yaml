@@ -4,7 +4,7 @@ login:
   generated_count: 38
   human_audit: done
   human_added_count: 7
-  postman: pending
+  postman: done
   execution: pending
   bugs: pending
 apply_coupon:
@@ -13,7 +13,7 @@ apply_coupon:
   generated_count: 36
   human_audit: done
   human_added_count: 7
-  postman: pending
+  postman: done
   execution: pending
   bugs: pending
 admin_create_coupon:
@@ -21,8 +21,8 @@ admin_create_coupon:
   ai_generation: done
   generated_count: 36
   human_audit: done
-  human_added_count: 0
-  postman: pending
+  human_added_count: 7
+  postman: done
   execution: pending
   bugs: pending
 global:

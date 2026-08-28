@@ -586,20 +586,20 @@ Before Postman generation, verify:
 
 ## 8.1 Counts
 
-- [ ] Login AI >= 35
-- [ ] Login Human >= 5
-- [ ] Apply Coupon AI >= 35
-- [ ] Apply Coupon Human >= 5
-- [ ] Admin Coupon AI >= 35
-- [ ] Admin Coupon Human >= 5
+- [x] Login AI >= 35
+- [x] Login Human >= 5
+- [x] Apply Coupon AI >= 35
+- [x] Apply Coupon Human >= 5
+- [x] Admin Coupon AI >= 35
+- [x] Admin Coupon Human >= 5
 
 ## 8.2 Contracts
 
-- [ ] all final tests conform to `schemas/test-case.schema.json`
-- [ ] no rejected AI cases in final suites
-- [ ] all human tests have confirmation
-- [ ] no duplicated test IDs
-- [ ] setup/cleanup is executable
+- [x] all final tests conform to `schemas/test-case.schema.json`
+- [x] no rejected AI cases in final suites
+- [x] all human tests have confirmation
+- [x] no duplicated test IDs
+- [x] setup/cleanup is executable
 
 ## Exit Criteria
 
@@ -654,11 +654,11 @@ pm.expect(true).to.eql(true);
 
 Implement as needed:
 
-- [ ] normal user login/token capture
-- [ ] admin login/token capture
-- [ ] dynamic created coupon IDs
-- [ ] setup state
-- [ ] cleanup state
+- [x] normal user login/token capture
+- [x] admin login/token capture
+- [x] dynamic created coupon IDs
+- [x] setup state
+- [x] cleanup state
 
 ## 9.4 X-Student-Id
 
