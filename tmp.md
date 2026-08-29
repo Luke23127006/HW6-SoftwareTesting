@@ -1,48 +1,43 @@
-# HUMAN GATE E2 — X-Student-Id Evidence
+# HUMAN GATE B1 — Confirm SUT Bug Candidates
 
-**Gate ID:** NEWMAN-EVIDENCE-01  
+**Gate ID:** BUG-CANDIDATES-01  
 **Status:** WAITING_FOR_HUMAN  
 **Decision:** PENDING
 
 ## Reason for stopping
 
-The real Newman run is complete, but HW06 requires a student-captured screenshot proving the request header `X-Student-Id: 23127006` was actually sent. Codex must not synthesize this screenshot.
+The first real Newman run produced eight requirement-backed `SUT_BUG_CANDIDATE` items. A failed test is not automatically a bug, and Codex cannot make the final defect decision for the student.
 
 ## Exact human task
 
-Open the real execution evidence in Postman/Newman (for example, a request's headers in Postman Console or the generated Newman HTML report) and capture a readable screenshot showing:
+Review `reports/failure-analysis.md` and decide `CONFIRM_BUG`, `REJECT_BUG`, or `NEEDS_RERUN` for each group:
 
-```http
-X-Student-Id: 23127006
-```
+| Group | Tests | Requirement | Decision |
+| --- | --- | --- | --- |
+| B1 — Incorrect percent calculation | COUPON-AI-001, COUPON-AI-017 | FR-09 percent formula | PENDING |
+| B2 — Minimum equality rejected | COUPON-AI-007 | FR-09 C3 (`>=`) | PENDING |
+| B3 — Apply Coupon ignores JWT | COUPON-AI-009, 010, 011 | FR-09 C4, SEC-02 | PENDING |
+| B4 — Admin accepts missing required fields | ADMIN-COUPON-AI-008, 032 | FR-17 | PENDING |
 
-Save the real screenshot under `evidence/`, preferably:
+The other 18 failures are classified `DATA_SETUP_FAILURE` and are not offered as bugs.
 
-```text
-evidence/x-student-id-23127006.png
-```
-
-Do not submit an edited or AI-generated image.
-
-## Existing real execution files
+## Evidence to review
 
 - `reports/newman/report.json`
 - `reports/newman/report.html`
-- `reports/newman/backend.stdout.log`
-- `reports/newman/backend.stderr.log`
+- `reports/results.json`
+- `reports/failure-analysis.md`
+- `docs/test-summary.md`
 
-Real run summary: 133 requests, 375 assertions, 36 failed assertions, one failed test script, and 37 recorded failures. These failures have not yet been classified as bugs.
+## Required human fields
 
-## Evidence required
-
-- Screenshot file exists under `evidence/`.
-- Header name and exact value `23127006` are readable.
-- Screenshot is from the real local execution evidence.
-- Set `Decision` to `APPROVED` and replace the path below.
-
-**Screenshot path:** PENDING_HUMAN_ACTION  
-**Human notes:** PENDING_HUMAN_ACTION
+- Decision for B1: PENDING
+- Decision for B2: PENDING
+- Decision for B3: PENDING
+- Decision for B4: PENDING
+- Human reasoning for each confirmed/rejected group: PENDING_HUMAN_ACTION
+- Overall `Decision`: `APPROVED`, `MODIFIED`, or `REJECTED`
 
 ## Completion instructions
 
-Save the screenshot and update this file, then ask Codex to continue. Codex will verify the real file, archive this gate, and proceed to failure analysis without automatically declaring SUT bugs.
+Update this file or reply with explicit decisions and reasoning for B1–B4, then ask Codex to continue. Confirmed groups may proceed to reproducible Markdown bug reports. Real GitHub Issue creation/URLs/screenshots will require a later human gate.

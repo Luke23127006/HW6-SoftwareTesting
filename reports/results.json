@@ -1,0 +1,2250 @@
+[
+  {
+    "test_id": "SETUP-USER",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "SETUP-ADMIN",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-001",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-001 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-001 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:3)"
+          }
+        },
+        {
+          "assertion": "LOGIN-AI-001 - 1: response contains a non-empty token",
+          "error": {
+            "name": "AssertionError",
+            "index": 2,
+            "test": "LOGIN-AI-001 - 1: response contains a non-empty token",
+            "message": "expected undefined to be a string",
+            "stack": "AssertionError: expected undefined to be a string\n   at Object.eval sandbox-script.js:3:3)"
+          }
+        },
+        {
+          "assertion": "LOGIN-AI-001 - 3: response contains user",
+          "error": {
+            "name": "AssertionError",
+            "index": 4,
+            "test": "LOGIN-AI-001 - 3: response contains user",
+            "message": "expected { Object (error) } to have property 'user'",
+            "stack": "AssertionError: expected { Object (error) } to have property 'user'\n   at Object.eval sandbox-script.js:5:3)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-002",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-002 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-002 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:4)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-003",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-004",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-005",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-006",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-007",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-008",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-009",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-010",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-011",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-012",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-013",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-014",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-015",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-016",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-017",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-018",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-019",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-020",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-020 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-020 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:22)"
+          }
+        },
+        {
+          "assertion": "LOGIN-AI-020 - 1: response contains a JWT",
+          "error": {
+            "name": "AssertionError",
+            "index": 2,
+            "test": "LOGIN-AI-020 - 1: response contains a JWT",
+            "message": "expected undefined to be a string",
+            "stack": "AssertionError: expected undefined to be a string\n   at Object.eval sandbox-script.js:3:22)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-021",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-022",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-023",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-024",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-025",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-026",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-027",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-027 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-027 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:29)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-028",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-028 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-028 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:30)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-029",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-030",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-031",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-032",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-033",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-033 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-033 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:35)"
+          }
+        },
+        {
+          "assertion": "LOGIN-AI-033 - 2: response contains token",
+          "error": {
+            "name": "AssertionError",
+            "index": 3,
+            "test": "LOGIN-AI-033 - 2: response contains token",
+            "message": "expected undefined to be a string",
+            "stack": "AssertionError: expected undefined to be a string\n   at Object.eval sandbox-script.js:4:35)"
+          }
+        },
+        {
+          "assertion": "LOGIN-AI-033 - 3: response contains user",
+          "error": {
+            "name": "AssertionError",
+            "index": 4,
+            "test": "LOGIN-AI-033 - 3: response contains user",
+            "message": "expected { Object (error) } to have property 'user'",
+            "stack": "AssertionError: expected { Object (error) } to have property 'user'\n   at Object.eval sandbox-script.js:5:35)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-034",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-034 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-034 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:36)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-035",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-035 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-035 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:37)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-036",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-AI-036 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-AI-036 - status",
+            "message": "expected response to have status code 200 but got 403",
+            "stack": "AssertionError: expected response to have status code 200 but got 403\n   at Object.eval sandbox-script.js:2:38)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-037",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-AI-038",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-HUMAN-001",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-HUMAN-001 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-HUMAN-001 - status",
+            "message": "expected response to have status code 200 but got 401",
+            "stack": "AssertionError: expected response to have status code 200 but got 401\n   at Object.eval sandbox-script.js:2:41)"
+          }
+        },
+        {
+          "assertion": "LOGIN-HUMAN-001 - 2: response contains a JWT for user B",
+          "error": {
+            "name": "AssertionError",
+            "index": 3,
+            "test": "LOGIN-HUMAN-001 - 2: response contains a JWT for user B",
+            "message": "expected undefined to be a string",
+            "stack": "AssertionError: expected undefined to be a string\n   at Object.eval sandbox-script.js:4:41)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-HUMAN-002",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "LOGIN-HUMAN-002 - status",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "LOGIN-HUMAN-002 - status",
+            "message": "expected response to have status code 200 but got 401",
+            "stack": "AssertionError: expected response to have status code 200 but got 401\n   at Object.eval sandbox-script.js:2:42)"
+          }
+        },
+        {
+          "assertion": "LOGIN-HUMAN-002 - 2: response contains a JWT",
+          "error": {
+            "name": "AssertionError",
+            "index": 3,
+            "test": "LOGIN-HUMAN-002 - 2: response contains a JWT",
+            "message": "expected undefined to be a string",
+            "stack": "AssertionError: expected undefined to be a string\n   at Object.eval sandbox-script.js:4:42)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-HUMAN-003",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-HUMAN-004",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-HUMAN-005",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-HUMAN-006",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "LOGIN-HUMAN-007",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-001",
+    "status": "FAIL",
+    "classification": "SUT_BUG_CANDIDATE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "COUPON-AI-001 - 1: discount_amount equals 50000",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "COUPON-AI-001 - 1: discount_amount equals 50000",
+            "message": "expected -4500000 to deeply equal 50000",
+            "stack": "AssertionError: expected -4500000 to deeply equal 50000\n   at Object.eval sandbox-script.js:2:48)"
+          }
+        },
+        {
+          "assertion": "COUPON-AI-001 - 2: final_amount equals 450000",
+          "error": {
+            "name": "AssertionError",
+            "index": 2,
+            "test": "COUPON-AI-001 - 2: final_amount equals 450000",
+            "message": "expected 5000000 to deeply equal 450000",
+            "stack": "AssertionError: expected 5000000 to deeply equal 450000\n   at Object.eval sandbox-script.js:3:48)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": true
+  },
+  {
+    "test_id": "COUPON-AI-002",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-003",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-004",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-005",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-006",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-007",
+    "status": "FAIL",
+    "classification": "SUT_BUG_CANDIDATE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "COUPON-AI-007 - 2: discount_amount equals 30000",
+          "error": {
+            "name": "AssertionError",
+            "index": 2,
+            "test": "COUPON-AI-007 - 2: discount_amount equals 30000",
+            "message": "expected undefined to deeply equal 30000",
+            "stack": "AssertionError: expected undefined to deeply equal 30000\n   at Object.eval sandbox-script.js:3:54)"
+          }
+        },
+        {
+          "assertion": "COUPON-AI-007 - 3: final_amount equals 270000",
+          "error": {
+            "name": "AssertionError",
+            "index": 3,
+            "test": "COUPON-AI-007 - 3: final_amount equals 270000",
+            "message": "expected undefined to deeply equal 270000",
+            "stack": "AssertionError: expected undefined to deeply equal 270000\n   at Object.eval sandbox-script.js:4:54)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": true
+  },
+  {
+    "test_id": "COUPON-AI-008",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-009",
+    "status": "FAIL",
+    "classification": "SUT_BUG_CANDIDATE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "COUPON-AI-009 - 1: coupon is not applied",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "COUPON-AI-009 - 1: coupon is not applied",
+            "message": "expected 200 to be at least 400",
+            "stack": "AssertionError: expected 200 to be at least 400\n   at Object.eval sandbox-script.js:2:56)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": true
+  },
+  {
+    "test_id": "COUPON-AI-010",
+    "status": "FAIL",
+    "classification": "SUT_BUG_CANDIDATE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "COUPON-AI-010 - 1: coupon is not applied",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "COUPON-AI-010 - 1: coupon is not applied",
+            "message": "expected 200 to be at least 400",
+            "stack": "AssertionError: expected 200 to be at least 400\n   at Object.eval sandbox-script.js:2:57)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": true
+  },
+  {
+    "test_id": "COUPON-AI-011",
+    "status": "FAIL",
+    "classification": "SUT_BUG_CANDIDATE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "COUPON-AI-011 - 1: coupon is not applied",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "COUPON-AI-011 - 1: coupon is not applied",
+            "message": "expected 200 to be at least 400",
+            "stack": "AssertionError: expected 200 to be at least 400\n   at Object.eval sandbox-script.js:2:58)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": true
+  },
+  {
+    "test_id": "COUPON-AI-012",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-013",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-014",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-015",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "COUPON-AI-015 - 1: coupon is not applied because usage is not below maximum",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "COUPON-AI-015 - 1: coupon is not applied because usage is not below maximum",
+            "message": "expected 200 to be at least 400",
+            "stack": "AssertionError: expected 200 to be at least 400\n   at Object.eval sandbox-script.js:2:62)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-016",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "COUPON-AI-016 - 1: coupon is not applied",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "COUPON-AI-016 - 1: coupon is not applied",
+            "message": "expected 200 to be at least 400",
+            "stack": "AssertionError: expected 200 to be at least 400\n   at Object.eval sandbox-script.js:2:63)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-017",
+    "status": "FAIL",
+    "classification": "SUT_BUG_CANDIDATE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "COUPON-AI-017 - 1: discount_amount equals 100000",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "COUPON-AI-017 - 1: discount_amount equals 100000",
+            "message": "expected -9000000 to deeply equal 100000",
+            "stack": "AssertionError: expected -9000000 to deeply equal 100000\n   at Object.eval sandbox-script.js:2:64)"
+          }
+        },
+        {
+          "assertion": "COUPON-AI-017 - 2: final_amount equals 900000",
+          "error": {
+            "name": "AssertionError",
+            "index": 2,
+            "test": "COUPON-AI-017 - 2: final_amount equals 900000",
+            "message": "expected 10000000 to deeply equal 900000",
+            "stack": "AssertionError: expected 10000000 to deeply equal 900000\n   at Object.eval sandbox-script.js:3:64)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": true
+  },
+  {
+    "test_id": "COUPON-AI-018",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-019",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-020",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-021",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-022",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-023",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-024",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-025",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-026",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-027",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-028",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-029",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 400
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-030",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-031",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-032",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-033",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-034",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-035",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-AI-036",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-HUMAN-001",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-HUMAN-002",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-HUMAN-003",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-HUMAN-004",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-HUMAN-005",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-HUMAN-006",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "COUPON-HUMAN-007",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 404
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-001",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "ADMIN-COUPON-AI-001 - 1: coupon is created and persisted",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "ADMIN-COUPON-AI-001 - 1: coupon is created and persisted",
+            "message": "expected 500 to be below 400",
+            "stack": "AssertionError: expected 500 to be below 400\n   at Object.eval sandbox-script.js:2:91)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-002",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "ADMIN-COUPON-AI-002 - 1: coupon is created and persisted",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "ADMIN-COUPON-AI-002 - 1: coupon is created and persisted",
+            "message": "expected 500 to be below 400",
+            "stack": "AssertionError: expected 500 to be below 400\n   at Object.eval sandbox-script.js:2:92)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-003",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 401
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-004",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-005",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-006",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-007",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-008",
+    "status": "FAIL",
+    "classification": "SUT_BUG_CANDIDATE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "ADMIN-COUPON-AI-008 - 1: coupon is not created",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "ADMIN-COUPON-AI-008 - 1: coupon is not created",
+            "message": "expected 200 to be at least 400",
+            "stack": "AssertionError: expected 200 to be at least 400\n   at Object.eval sandbox-script.js:2:98)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": true
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-009",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-010",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-011",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-012",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-013",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-014",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-015",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-016",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-017",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-018",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "ADMIN-COUPON-AI-018 - 1: coupon is created",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "ADMIN-COUPON-AI-018 - 1: coupon is created",
+            "message": "expected 500 to be below 400",
+            "stack": "AssertionError: expected 500 to be below 400\n   at Object.eval sandbox-script.js:2:108)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-019",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-020",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-021",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "ADMIN-COUPON-AI-021 - 1: coupon is created",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "ADMIN-COUPON-AI-021 - 1: coupon is created",
+            "message": "expected 500 to be below 400",
+            "stack": "AssertionError: expected 500 to be below 400\n   at Object.eval sandbox-script.js:2:111)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-022",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-023",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-024",
+    "status": "FAIL",
+    "classification": "DATA_SETUP_FAILURE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "ADMIN-COUPON-AI-024 - 1: coupon is created",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "ADMIN-COUPON-AI-024 - 1: coupon is created",
+            "message": "expected 500 to be below 400",
+            "stack": "AssertionError: expected 500 to be below 400\n   at Object.eval sandbox-script.js:2:114)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-025",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-026",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-027",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-028",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-029",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-030",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-031",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-032",
+    "status": "FAIL",
+    "classification": "SUT_BUG_CANDIDATE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": [
+        {
+          "assertion": "ADMIN-COUPON-AI-032 - 1: coupon is not created",
+          "error": {
+            "name": "AssertionError",
+            "index": 1,
+            "test": "ADMIN-COUPON-AI-032 - 1: coupon is not created",
+            "message": "expected 200 to be at least 400",
+            "stack": "AssertionError: expected 200 to be at least 400\n   at Object.eval sandbox-script.js:2:122)"
+          }
+        }
+      ]
+    },
+    "needs_human_confirmation": true
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-033",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 403
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-034",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-035",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-AI-036",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-HUMAN-001",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-HUMAN-002",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-HUMAN-003",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-HUMAN-004",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-HUMAN-005",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-HUMAN-006",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 500
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  },
+  {
+    "test_id": "ADMIN-COUPON-HUMAN-007",
+    "status": "PASS",
+    "classification": "NONE",
+    "expected": null,
+    "actual": {
+      "response_code": 200
+    },
+    "evidence": {
+      "newman_source": "reports\\newman\\report.json",
+      "failed_assertions": []
+    },
+    "needs_human_confirmation": false
+  }
+]

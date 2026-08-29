@@ -865,3 +865,56 @@ Closed the Student ID gate after verifying 23127006 in both configuration and Po
 
 `NOT_RETAINED`
 
+## AI-031
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 01:11:49 +07
+
+### Prompt
+
+```text
+continue
+```
+
+### AI Response Summary
+
+Validated the student-supplied X-Student-Id screenshot gate. Visually inspected evidence/x-student-id-23127006.png and confirmed the real Postman Console visibly shows X-Student-Id 23127006 for GET http://localhost:3000/api/products with a 200 OK response. Archived NEWMAN-EVIDENCE-01 and reset tmp.md. No screenshot was generated or altered by AI.
+
+### Artifacts
+
+- `evidence/x-student-id-23127006.png`
+- `ai-logs/human-gates/NEWMAN-EVIDENCE-01.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-032
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 01:14:29 +07
+
+### Prompt
+
+```text
+continue
+```
+
+### AI Response Summary
+
+Closed and archived the verified X-Student-Id screenshot gate, parsed the real Newman report into 133 executed items with 107 passing and 26 failing items, and replaced the parser's provisional all-bug labels with evidence-based classifications. Classified 18 failures as DATA_SETUP_FAILURE and eight as SUT_BUG_CANDIDATE across four requirement-backed groups: FR-09 percent formula, inclusive minimum threshold, Apply Coupon authentication, and FR-17 required fields. Updated results.json, failure-analysis.md, and test-summary.md. Did not confirm or report any bug on the student's behalf and kept execution state unfinished pending repairs and reruns.
+
+### Artifacts
+
+- `reports/results.json`
+- `reports/failure-analysis.md`
+- `docs/test-summary.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
