@@ -253,7 +253,7 @@
   category: security
   priority: high
   preconditions: [A normal registered user exists, The account is unlocked]
-  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!", role: admin}}
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: isolated-success@example.test, password: "FixturePass1!", role: admin}}
   expected: {status: 200, assertions: [response contains a JWT, returned identity and token do not gain admin role from the extra request field]}
   cleanup: []
   rationale: Tests a dangerous extra-field interaction while retaining the defined success path.
@@ -344,7 +344,7 @@
   category: state
   priority: high
   preconditions: [A registered user was locked, More than 30 seconds have elapsed since lock activation]
-  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: elapsed-lock@example.test, password: "FixturePass1!"}}
   expected: {status: 200, assertions: [login succeeds after the lock duration, response contains a non-empty JWT token]}
   cleanup: [Restore account to baseline]
   rationale: Covers the transition out of the temporary lock.
@@ -357,7 +357,7 @@
   category: state
   priority: high
   preconditions: [A registered user is unlocked with failure count 2]
-  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: two-failures@example.test, password: "FixturePass1!"}}
   expected: {status: 200, assertions: [login succeeds and returns a JWT, post-success failure-counter state is recorded as SPEC_UNDEFINED]}
   cleanup: [Restore account to baseline]
   rationale: Consecutive semantics suggest a reset, but the source does not explicitly define it.
@@ -422,7 +422,7 @@
   category: schema
   priority: high
   preconditions: [A registered user exists, The account is unlocked]
-  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: isolated-success@example.test, password: "FixturePass1!"}}
   expected: {status: 200, assertions: [response is a JSON object, response contains token, response contains user, token is a string]}
   cleanup: []
   rationale: Validates only the response fields and token type explicitly defined by the API specification.
@@ -435,7 +435,7 @@
   category: authentication
   priority: high
   preconditions: [A registered user exists, The account is unlocked]
-  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: isolated-success@example.test, password: "FixturePass1!"}}
   expected: {status: 200, assertions: [token is a non-empty string with three dot-separated JWT segments, claims algorithm and expiration are not asserted because they are SPEC_UNDEFINED]}
   cleanup: []
   rationale: Confirms the defined JWT semantic while respecting undefined JWT details.
@@ -448,7 +448,7 @@
   category: security
   priority: high
   preconditions: [A registered user exists, The account is unlocked]
-  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: isolated-success@example.test, password: "FixturePass1!"}}
   expected: {status: 200, assertions: [response serialization contains no password field or submitted password value, token remains present]}
   cleanup: []
   rationale: Tests response exposure relevant to password security; storage compliance requires separate inspection.
@@ -461,7 +461,7 @@
   category: security
   priority: high
   preconditions: [Authorized read-only access to the isolated test database, A test user with known password exists]
-  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: test@eshop.com, password: "Test1234!"}}
+  request: {method: POST, path: /api/login, headers: {Content-Type: application/json}, body: {email: isolated-success@example.test, password: "FixturePass1!"}}
   expected: {status: 200, assertions: [login succeeds, stored password representation is not equal to the known plaintext password]}
   cleanup: []
   rationale: SEC-01 is a storage property and cannot be proven by black-box response assertions alone.

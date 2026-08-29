@@ -58,11 +58,24 @@ def walk(items):
             yield item
 
 collection = json.loads(COL.read_text(encoding="utf-8"))
+fixture_bodies = {
+    "LOGIN-AI-020": {"email": "isolated-success@example.test", "password": "FixturePass1!", "role": "admin"},
+    "LOGIN-AI-027": {"email": "elapsed-lock@example.test", "password": "FixturePass1!"},
+    "LOGIN-AI-028": {"email": "two-failures@example.test", "password": "FixturePass1!"},
+    "LOGIN-AI-033": {"email": "isolated-success@example.test", "password": "FixturePass1!"},
+    "LOGIN-AI-034": {"email": "isolated-success@example.test", "password": "FixturePass1!"},
+    "LOGIN-AI-035": {"email": "isolated-success@example.test", "password": "FixturePass1!"},
+    "LOGIN-AI-036": {"email": "isolated-success@example.test", "password": "FixturePass1!"},
+    "COUPON-AI-015": {"code": "VIP100", "total_amount": 500000, "user_id": 1001},
+    "COUPON-AI-016": {"code": "VIP100", "total_amount": 500000, "user_id": 1002},
+}
 for item in walk(collection["item"]):
     tid = item["name"].split(" | ", 1)[0]
     test = tests[tid]
     item["event"][0]["script"]["exec"] = js_for(test)
     req = item["request"]
+    if tid in fixture_bodies:
+        req["body"]["raw"] = json.dumps(fixture_bodies[tid])
     for header in req.get("header", []):
         value = header.get("value", "")
         if "admin-jwt" in value:

@@ -978,7 +978,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"email\": \"test@eshop.com\", \"password\": \"Test1234!\", \"role\": \"admin\"}",
+              "raw": "{\"email\": \"isolated-success@example.test\", \"password\": \"FixturePass1!\", \"role\": \"admin\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1297,7 +1297,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"email\": \"test@eshop.com\", \"password\": \"Test1234!\"}",
+              "raw": "{\"email\": \"elapsed-lock@example.test\", \"password\": \"FixturePass1!\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1343,7 +1343,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"email\": \"test@eshop.com\", \"password\": \"Test1234!\"}",
+              "raw": "{\"email\": \"two-failures@example.test\", \"password\": \"FixturePass1!\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1571,7 +1571,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"email\": \"test@eshop.com\", \"password\": \"Test1234!\"}",
+              "raw": "{\"email\": \"isolated-success@example.test\", \"password\": \"FixturePass1!\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1619,7 +1619,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"email\": \"test@eshop.com\", \"password\": \"Test1234!\"}",
+              "raw": "{\"email\": \"isolated-success@example.test\", \"password\": \"FixturePass1!\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1665,7 +1665,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"email\": \"test@eshop.com\", \"password\": \"Test1234!\"}",
+              "raw": "{\"email\": \"isolated-success@example.test\", \"password\": \"FixturePass1!\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1711,7 +1711,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"email\": \"test@eshop.com\", \"password\": \"Test1234!\"}",
+              "raw": "{\"email\": \"isolated-success@example.test\", \"password\": \"FixturePass1!\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -2860,7 +2860,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"code\": \"VIP100\", \"total_amount\": 500000, \"user_id\": 1}",
+              "raw": "{\"code\": \"VIP100\", \"total_amount\": 500000, \"user_id\": 1001}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -2908,7 +2908,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\"code\": \"VIP100\", \"total_amount\": 500000, \"user_id\": 1}",
+              "raw": "{\"code\": \"VIP100\", \"total_amount\": 500000, \"user_id\": 1002}",
               "options": {
                 "raw": {
                   "language": "json"

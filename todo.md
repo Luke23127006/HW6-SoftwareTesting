@@ -809,13 +809,13 @@ Student confirms whether it is a genuine bug.
 
 If confirmed:
 
-- [ ] create `bugs/BUG-XXX.md`
-- [ ] include requirement
-- [ ] include related test ID
-- [ ] include steps
-- [ ] include expected
-- [ ] include actual
-- [ ] include real evidence
+- [x] create `bugs/BUG-XXX.md`
+- [x] include requirement
+- [x] include related test ID
+- [x] include steps
+- [x] include expected
+- [x] include actual
+- [x] include real evidence
 
 ## HUMAN GATE B2 — GitHub Issue
 
@@ -909,8 +909,8 @@ Push commit with valid tests.
 - [x] Confirm no historical PASS run currently exists
 - [x] Obtain the exported Newman JSON/HTML from CI run `33228816770`
 - [x] Classify every CI failure as confirmed SUT defect, setup/environment failure, incorrect test, or unconfirmed requirement-backed bug candidate
-- [ ] Correct only setup/environment failures and genuinely incorrect tests
-- [ ] Preserve confirmed defect-detecting tests and expected results in the complete suite
+- [x] Correct only setup/environment failures and genuinely incorrect tests
+- [x] Preserve confirmed defect-detecting tests and expected results in the complete suite
 - [ ] Obtain student approval for a transparent CI demonstration subset if a full-suite PASS remains impossible without fixing reported SUT defects
 
 ---

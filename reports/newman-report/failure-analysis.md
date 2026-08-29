@@ -10,7 +10,7 @@
 
 The JSON is authoritative for machine counts: 133 requests, 375 assertions, 39 failed assertions, no failed test scripts, and 31 request items with at least one failed assertion. The previously supplied value of 37 failed tests is preserved as a student-reported/display value, but it does not match the downloaded JSON or the screenshot log numbering, which reaches failure 39.
 
-## A — Confirmed Genuine SUT Defects (8 items)
+## A — Confirmed Genuine SUT Defects (19 items)
 
 - `COUPON-AI-001`, `COUPON-AI-017`: confirmed BUG-001, incorrect percent calculation.
 - `COUPON-AI-007`: confirmed BUG-002, equality at the minimum rejected.
@@ -18,6 +18,12 @@ The JSON is authoritative for machine counts: 133 requests, 375 assertions, 39 f
 - `ADMIN-COUPON-AI-008`, `ADMIN-COUPON-AI-032`: confirmed BUG-004, missing required fields accepted.
 
 These assertions remain unchanged in the authoritative suite.
+
+The student subsequently confirmed the following 11 CI-discovered cases using the shared reason that the clean CI run returned HTTP 200 and created coupons despite an expired administrator token or explicit FR-17 constraint violations, demonstrating SUT non-enforcement rather than fixture or expectation problems:
+
+- `ADMIN-COUPON-AI-006`
+- `ADMIN-COUPON-AI-013`, `ADMIN-COUPON-AI-014`, `ADMIN-COUPON-AI-015`
+- `ADMIN-COUPON-AI-016`, `ADMIN-COUPON-AI-017`, `ADMIN-COUPON-AI-022`, `ADMIN-COUPON-AI-023`, `ADMIN-COUPON-AI-025`, `ADMIN-COUPON-AI-026`, `ADMIN-COUPON-AI-028`
 
 ## B — Test Data / Setup Failures (12 items)
 
@@ -40,9 +46,9 @@ These setup defects may be corrected without changing the documented expected re
 
 No incorrect expected result has been identified from this CI artifact. This count is **0** unless later evidence establishes a test defect.
 
-## Unconfirmed SUT Bug Candidates (11 items)
+## Confirmed CI-Discovered SUT Defects (11 items)
 
-These failures are not setup failures merely because the SUT returned HTTP 200. Their requests exercised documented authentication, required-field, enum, and numeric constraints, but human confirmation is required before they become confirmed bugs:
+These failures are confirmed by the student and grouped into BUG-004 through BUG-007:
 
 - `ADMIN-COUPON-AI-006`: expired administrator JWT accepted.
 - `ADMIN-COUPON-AI-013`: missing required `type` accepted.

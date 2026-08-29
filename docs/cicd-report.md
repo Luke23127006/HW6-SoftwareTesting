@@ -31,10 +31,9 @@ The screenshot visibly identifies assertion failures including `ADMIN-COUPON-AI-
 
 The downloaded CI run classifies its 31 failed request items as follows:
 
-- already-confirmed genuine SUT defects: 8 items;
+- confirmed genuine SUT defects: 19 items;
 - test-data/setup failures: 12 items;
 - incorrect test cases: 0 identified.
-- additional requirement-backed SUT bug candidates pending human confirmation: 11 items.
 
 Only setup/environment failures and genuinely incorrect tests may be corrected as testing-infrastructure work. Confirmed defect-detecting tests and their expected results remain unchanged in the final suite and bug reports. The detailed classification is recorded in `reports/newman-report/failure-analysis.md`.
 
@@ -43,6 +42,8 @@ Only setup/environment failures and genuinely incorrect tests may be corrected a
 GitHub's public Actions history was inspected on 2026-08-29. It contains four `HW06 API Tests` runs, all with conclusion `failure`. Only commits `a674794fee845ee6566c9119cc9b08a4bd55ec66` and `34ea594f39061e6eed9c8be9a702141f20109b96` contained the final Postman collection; neither produced a passing run. Therefore, no existing real PASS sample can currently be reused.
 
 The smallest honest fallback, subject to student approval after CI failure triage, is an explicitly labeled, separate CI demonstration collection containing a stable requirement-valid smoke subset. It would not replace or modify the complete 131-test collection. The complete suite would remain the authoritative defect-detection artifact and continue to report known SUT failures. The demonstration collection would be used only to prove the CI pass/fail mechanism: first unchanged for a genuine PASS, then in a separate temporary commit with exactly one intentionally impossible assertion for the required single-FAIL run, followed by a revert. The report must disclose the subset scope and must not describe it as a full-suite pass.
+
+The student approved this strategy. The manual `workflow_dispatch` input now offers `full` and `demo`. Push and pull-request events still execute the authoritative full collection. The `demo` option explicitly executes `postman/HW06.ci-demonstration.postman_collection.json`, containing authentication setup plus one stable requirement-valid case from Login, Apply Coupon, and Admin Create Coupon. Any green demonstration run will be labeled as a subset PASS, never a full-suite PASS.
 
 ## Passing Run
 

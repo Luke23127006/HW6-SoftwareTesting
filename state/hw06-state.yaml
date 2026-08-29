@@ -5,7 +5,7 @@ login:
   human_audit: done
   human_added_count: 7
   postman: done
-  execution: pending
+  execution: done
   bugs: done
 apply_coupon:
   spec_analysis: done
@@ -14,7 +14,7 @@ apply_coupon:
   human_audit: done
   human_added_count: 7
   postman: done
-  execution: pending
+  execution: done
   bugs: done
 admin_create_coupon:
   spec_analysis: done
@@ -23,7 +23,7 @@ admin_create_coupon:
   human_audit: done
   human_added_count: 7
   postman: done
-  execution: pending
+  execution: done
   bugs: done
 global:
   cicd: pending

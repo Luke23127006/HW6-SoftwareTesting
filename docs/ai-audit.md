@@ -1237,3 +1237,251 @@ Validated the downloaded CI artifact under reports/newman-report and closed CI-T
 
 `NOT_RETAINED`
 
+## AI-041
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 17:07:56 +07
+
+### Prompt
+
+```text
+continue, I approved all
+```
+
+### AI Response Summary
+
+Validated the student's explicit approval and the 11 CONFIRM_BUG entries already present in CI-NEW-BUG-CANDIDATES-01. Preserved every confirmation but kept the gate pending because all required human reasons still contained PENDING. Requested either one shared student-authored reason covering all 11 cases or individual reasons, without inventing human judgment or extending bug reports.
+
+### Artifacts
+
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-042
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 17:09:56 +07
+
+### Prompt
+
+```text
+recommend a good reason for me, then I will review
+```
+
+### AI Response Summary
+
+Suggested a concise shared human-review reason for the 11 pending admin coupon bug candidates. The recommendation explains that the clean CI run reproducibly returned HTTP 200 and created coupons despite an expired administrator token or inputs violating explicit FR-17 required-field, enum, and numeric constraints; therefore the failures reflect SUT non-enforcement rather than setup or incorrect expectations. Left the final human reason and gate decision unchanged for student review.
+
+### Artifacts
+
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-043
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 17:12:44 +07
+
+### Prompt
+
+```text
+ok I approved
+```
+
+### AI Response Summary
+
+Applied the student's approval of the previously suggested shared reason to close CI-NEW-BUG-CANDIDATES-01 and confirm all 11 CI-discovered cases as genuine SUT defects. Grouped the findings by defect theme: extended BUG-004 for additional missing required fields and drafted BUG-005 for expired admin JWT acceptance, BUG-006 for missing/null/invalid type acceptance, and BUG-007 for invalid numeric constraints. Updated the CI failure analysis, CI report, and bug index without changing valid test expectations. Archived the human confirmation and opened CI-BUG-ISSUES-02 for real GitHub Issue updates, URLs, issue numbers, and screenshots; none were fabricated.
+
+### Artifacts
+
+- `bugs/BUG-004.md`
+- `bugs/BUG-005.md`
+- `bugs/BUG-006.md`
+- `bugs/BUG-007.md`
+- `docs/bugs.md`
+- `reports/newman-report/failure-analysis.md`
+- `docs/cicd-report.md`
+- `ai-logs/human-gates/CI-NEW-BUG-CANDIDATES-01.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-044
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 17:49:45 +07
+
+### Prompt
+
+```text
+continue, check the evidence in @evidence/bugs
+```
+
+### AI Response Summary
+
+Inspected evidence/bugs and visually validated the real GitHub screenshots for BUG-005 Issue #5 and BUG-006 Issue #6 in the correct repository with matching titles. Normalized their issue numbers, URLs, and screenshot paths in the bug reports. Recorded the student-supplied BUG-007 URL as Issue #7 but kept its screenshot pending because evidence/bugs/github-bug-007.png was missing. Kept the BUG-004 update evidence pending because the existing screenshot predates and does not visibly verify the newly added missing-field cases. Reopened CI-BUG-ISSUES-02 for only the updated BUG-004 screenshot and BUG-007 screenshot; no evidence was fabricated.
+
+### Artifacts
+
+- `evidence/bugs/github-bug-005.png`
+- `evidence/bugs/github-bug-006.png`
+- `bugs/BUG-005.md`
+- `bugs/BUG-006.md`
+- `bugs/BUG-007.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-045
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 17:54:10 +07
+
+### Prompt
+
+```text
+ok I added it, continue
+```
+
+### AI Response Summary
+
+Visually validated the newly supplied evidence/bugs/github-bug-007.png as real GitHub Issue #7 in the correct repository with the matching BUG-007 title and visible FR-17 constraints. Updated BUG-007 with the verified screenshot path and marked its gate fields verified. Kept CI-BUG-ISSUES-02 pending only because the existing BUG-004 screenshot still predates and does not visibly prove the required Issue #4 update; no updated BUG-004 screenshot was found.
+
+### Artifacts
+
+- `evidence/bugs/github-bug-007.png`
+- `bugs/BUG-007.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-046
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 21:37:24 +07
+
+### Prompt
+
+```text
+evidence\bugs\github-bug-004.png
+continue
+```
+
+### AI Response Summary
+
+Reinspected evidence/bugs/github-bug-004.png and verified that it shows the real Issue #4 but not the newly requested reproduction cases. Queried the public GitHub Issue #4 body and confirmed it remains unchanged: it contains only missing-code and empty-body steps with test IDs ADMIN-COUPON-AI-008 and ADMIN-COUPON-AI-032, and its updated timestamp equals its creation timestamp. Kept CI-BUG-ISSUES-02 pending and documented the exact missing cases and test IDs required for the Issue update; no update or screenshot evidence was fabricated.
+
+### Artifacts
+
+- `evidence/bugs/github-bug-004.png`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-047
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 21:40:21 +07
+
+### Prompt
+
+```text
+evidence\bugs\github-bug-004.png
+continue
+```
+
+### AI Response Summary
+
+Validated the replaced BUG-004 screenshot and current public GitHub Issue #4. The screenshot visibly identifies the correct repository, Issue #4, matching title, FR-17 required fields, and an edited state; the live issue body contains the added related tests ADMIN-COUPON-AI-013, ADMIN-COUPON-AI-023, and ADMIN-COUPON-AI-028. Closed and archived CI-BUG-ISSUES-02, marked the confirmed bug-report content/evidence checklist complete, updated the bug index to record seven real issues with screenshots, and reset tmp.md. No evidence was fabricated.
+
+### Artifacts
+
+- `evidence/bugs/github-bug-004.png`
+- `docs/bugs.md`
+- `todo.md`
+- `ai-logs/human-gates/CI-BUG-ISSUES-02.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-048
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 21:47:43 +07
+
+### Prompt
+
+```text
+evidence\bugs\github-bug-004.png
+continue
+```
+
+### AI Response Summary
+
+Closed the BUG-004 evidence gate, corrected only the 12 setup/data failures using deterministic external fixtures and isolated identities, added fixture preparation to CI, and preserved all expected assertions. A clean real Newman rerun executed 133 requests and 375 assertions with zero failed scripts; all setup failures passed, leaving 22 failed assertions across 19 items, all tied to student-confirmed BUG-001 through BUG-007. Marked execution done, documented the clean rerun, and opened CI-DEMO-STRATEGY-01 for approval of a transparent separate smoke-subset demonstration.
+
+### Artifacts
+
+- `postman/data/prepare_fixtures.js`
+- `postman/data/finalize_collection.py`
+- `postman/HW06.postman_collection.json`
+- `tests/login/final-tests.yaml`
+- `tests/apply-coupon/final-tests.yaml`
+- `.github/workflows/api-tests.yml`
+- `reports/newman-rerun/report-clean.json`
+- `reports/newman-rerun/report-clean.html`
+- `reports/newman-rerun/failure-analysis.md`
+- `docs/test-summary.md`
+- `state/hw06-state.yaml`
+- `todo.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-049
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 21:53:07 +07
+
+### Prompt
+
+```text
+continue, I approved all
+```
+
+### AI Response Summary
+
+Applied the student's approval of CI-DEMO-STRATEGY-01. Preserved the authoritative 133-request defect-detection collection and added a separately named five-request CI demonstration collection containing two token setup requests plus one stable requirement-valid passing case from each selected API. Added an explicit manual full/demo workflow input while keeping push and pull-request runs on the authoritative full suite. Documented that a demo green run is a subset PASS, not a full-suite PASS. Archived the approved strategy and opened CI-PASS-01 for real commit, Actions URL, screenshot, and outcome evidence; none were fabricated.
+
+### Artifacts
+
+- `postman/HW06.ci-demonstration.postman_collection.json`
+- `.github/workflows/api-tests.yml`
+- `docs/cicd-report.md`
+- `ai-logs/human-gates/CI-DEMO-STRATEGY-01.md`
+- `reports/ci-demo-local/report.json`
+- `reports/ci-demo-local/report.html`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+

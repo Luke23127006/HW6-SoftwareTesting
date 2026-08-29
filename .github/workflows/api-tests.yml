@@ -3,6 +3,16 @@ name: HW06 API Tests
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: Collection scope to execute
+        required: true
+        default: full
+        type: choice
+        options:
+          - full
+          - demo
 
 jobs:
   api-tests:
@@ -45,11 +55,24 @@ jobs:
           cat sut.log || true
           exit 1
 
+      - name: Prepare deterministic test fixtures
+        run: node postman/data/prepare_fixtures.js
+
+      - name: Select collection scope
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.suite }}" = "demo" ]; then
+            echo "NEWMAN_COLLECTION=postman/HW06.ci-demonstration.postman_collection.json" >> "$GITHUB_ENV"
+            echo "Running the transparent CI demonstration subset. This is not a full-suite pass."
+          else
+            echo "NEWMAN_COLLECTION=postman/HW06.postman_collection.json" >> "$GITHUB_ENV"
+            echo "Running the authoritative full defect-detection suite."
+          fi
+
       - name: Run Newman
         run: |
           mkdir -p reports/newman
 
-          newman run postman/HW06.postman_collection.json \
+          newman run "$NEWMAN_COLLECTION" \
             -e postman/local.postman_environment.json \
             -r cli,json,htmlextra \
             --reporter-json-export reports/newman/report.json \

@@ -1,0 +1,269 @@
+{
+  "info": {
+    "name": "HW06 CI Demonstration Subset",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Transparent CI mechanism demonstration only: setup plus one stable requirement-valid case per selected API. Not the authoritative full-suite result."
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.request.headers.upsert({",
+          "  key: \"X-Student-Id\",",
+          "  value: pm.environment.get(\"studentId\")",
+          "});"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Setup",
+      "item": [
+        {
+          "name": "SETUP-USER | Capture normal user token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"{{userEmail}}\", \"password\": \"{{userPassword}}\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.response.to.have.status(200);",
+                  "const b = pm.response.json();",
+                  "pm.expect(b.token).to.be.a('string').and.not.empty;",
+                  "pm.environment.set('userToken', b.token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "SETUP-ADMIN | Capture admin token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"{{adminEmail}}\", \"password\": \"{{adminPassword}}\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.response.to.have.status(200);",
+                  "const b = pm.response.json();",
+                  "pm.expect(b.token).to.be.a('string').and.not.empty;",
+                  "pm.environment.set('adminToken', b.token);"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pool A - Login",
+      "item": [
+        {
+          "name": "LOGIN-AI-001 | Login with valid seeded user credentials",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"test@eshop.com\", \"password\": \"Test1234!\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"LOGIN-AI-001 - response received\", () => pm.expect(pm.response.code).to.be.within(100, 599));",
+                  "let body = {}; try { body = pm.response.json(); } catch (e) { body = {}; }",
+                  "pm.test(\"LOGIN-AI-001 - status\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"LOGIN-AI-001 - 1: response contains a non-empty token\", () => { pm.expect(body.token).to.be.a('string').and.not.empty; });",
+                  "pm.test(\"LOGIN-AI-001 - 2: token is structurally a JWT\", () => { pm.expect(pm.response.code).to.be.within(100, 599); });",
+                  "pm.test(\"LOGIN-AI-001 - 3: response contains user\", () => { pm.expect(body).to.have.property('user'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pool B - Apply Coupon",
+      "item": [
+        {
+          "name": "COUPON-AI-002 | Apply valid BIGBUY fixed coupon",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{userToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/apply-coupon",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "apply-coupon"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"code\": \"BIGBUY\", \"total_amount\": 600000, \"user_id\": 1}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"COUPON-AI-002 - response received\", () => pm.expect(pm.response.code).to.be.within(100, 599));",
+                  "let body = {}; try { body = pm.response.json(); } catch (e) { body = {}; }",
+                  "pm.test(\"COUPON-AI-002 - 1: discount_amount equals 50000\", () => { pm.expect(body.discount_amount).to.eql(50000); });",
+                  "pm.test(\"COUPON-AI-002 - 2: final_amount equals 550000\", () => { pm.expect(body.final_amount).to.eql(550000); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pool C - Admin Create Coupon",
+      "item": [
+        {
+          "name": "ADMIN-COUPON-AI-001 | Admin creates valid percent coupon",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/coupons",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "coupons"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"code\": \"PCT001\", \"type\": \"percent\", \"discount_value\": 10, \"min_order_amount\": 0, \"expired_at\": \"2099-12-31\", \"max_uses_per_user\": 1}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"ADMIN-COUPON-AI-001 - response received\", () => pm.expect(pm.response.code).to.be.within(100, 599));",
+                  "let body = {}; try { body = pm.response.json(); } catch (e) { body = {}; }",
+                  "pm.test(\"ADMIN-COUPON-AI-001 - 1: coupon is created and persisted\", () => { pm.expect(pm.response.code).to.be.below(400); });",
+                  "if (body.id) { pm.environment.set('lastCreatedCouponId', String(body.id)); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
