@@ -28,15 +28,13 @@
 
 ## Postman Features Used
 
-Update this section with features actually used. Do not claim a feature only because the assignment mentions it.
-
-- Collection: `TODO`
-- Environment variables: `TODO`
-- Pre-request scripts: `TODO`
-- Test scripts/assertions: `TODO`
-- Data-driven execution: `TODO`
-- Collection Runner/Newman: `TODO`
-- Other features: `TODO`
+- Collection: one collection organized into Setup, Login, Apply Coupon, Admin Create Coupon, and Cleanup folders; 133 executable requests.
+- Environment variables: `baseUrl`, `studentId`, user/admin credentials and tokens, and `lastCreatedCouponId` are defined in `postman/local.postman_environment.json`.
+- Pre-request scripts: a collection-level script injects `X-Student-Id: {{studentId}}` into every request.
+- Test scripts/assertions: all 133 requests have executable Postman test scripts; the 131 reviewed test cases contain concrete status, response, security, and state assertions.
+- Runtime variable capture: Setup requests save normal-user and administrator JWTs, and applicable requests save the last created coupon ID.
+- Collection Runner/Newman: the collection was executed locally with Newman using CLI, JSON, and HTML Extra reporters.
+- Not used: data-driven runner input, mock servers, and monitors.
 
 ## CI/CD Evidence
 

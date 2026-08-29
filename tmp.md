@@ -1,40 +1,34 @@
-# HUMAN GATE B2 — Create Real GitHub Issues
+# HUMAN GATE CI-PASS-01
 
-**Gate ID:** GITHUB-BUG-ISSUES-01  
-**Status:** WAITING_FOR_HUMAN  
-**Decision:** PENDING
+Status: WAITING_FOR_HUMAN
 
-## Reason for stopping
+Reason for stopping: Phase 14 requires evidence from a real GitHub Actions run in which all intended API tests pass. Codex must not fabricate the commit SHA, Actions URL, screenshot, or outcome. The existing local Newman report is not a passing baseline: it contains confirmed SUT defects and data-setup failures.
 
-Four defects were confirmed and documented locally. HW06 requires real GitHub Issues with screenshots. Codex must not invent issue URLs, numbers, or screenshots.
+## Human task
 
-## Exact human task
+1. Ensure the repository version you push has all intended API tests passing without weakening or removing valid defect-detecting assertions. Resolve the confirmed SUT defects and remaining data-setup failures first if they are still present.
+2. Commit and push `.github/workflows/api-tests.yml`, the Postman artifacts, and any legitimate prerequisite fixes.
+3. Open the resulting `HW06 API Tests` GitHub Actions run and verify that it passes.
+4. Save a readable screenshot under `evidence/cicd/`.
+5. Replace the pending fields below with the real values and set `Decision: APPROVED`.
 
-Create one real GitHub Issue for each report, copying its reproducible content:
+## Files to review
 
-- `bugs/BUG-001.md` — incorrect percent calculation
-- `bugs/BUG-002.md` — equality at minimum rejected
-- `bugs/BUG-003.md` — Apply Coupon accepts invalid/missing JWT
-- `bugs/BUG-004.md` — Admin accepts missing required coupon fields
+- `.github/workflows/api-tests.yml`
+- `docs/cicd-report.md`
+- `reports/newman/report.html`
 
-Attach readable real evidence to each issue. Then save screenshots under `evidence/` and fill:
+## Required evidence
 
-| Bug     | Issue number | Real GitHub URL      | Screenshot path      |
-| ------- | ------------ | -------------------- | -------------------- |
-| BUG-001 | PENDING      | PENDING_HUMAN_ACTION | PENDING_HUMAN_ACTION |
-| BUG-002 | PENDING      | PENDING_HUMAN_ACTION | PENDING_HUMAN_ACTION |
-| BUG-003 | PENDING      | PENDING_HUMAN_ACTION | PENDING_HUMAN_ACTION |
-| BUG-004 | PENDING      | PENDING_HUMAN_ACTION | PENDING_HUMAN_ACTION |
+- Commit SHA: PENDING
+- GitHub Actions URL: PENDING
+- Screenshot path: PENDING
+- Result: PENDING
 
-## Evidence required
+Decision: PENDING
 
-- Four real issue numbers and direct URLs.
-- Four readable screenshots showing the created issues/evidence.
-- URLs are accessible in the intended public repository.
-- Set overall `Decision` to `APPROVED`.
+Notes: Do not approve this gate using the existing failing local Newman run. If a clean passing baseline cannot be produced without changing intended requirements, record that limitation in Notes instead of claiming PASS.
 
-**Human notes:** PENDING_HUMAN_ACTION
+## Completion instruction
 
-## Completion instructions
-
-Update this file and ask Codex to continue. Codex will verify the supplied files/URLs syntactically, update each local bug report, archive this gate, and continue. It will not fabricate or silently replace missing evidence.
+After filling the real evidence and decision, ask Codex to continue.

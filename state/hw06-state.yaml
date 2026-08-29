@@ -6,7 +6,7 @@ login:
   human_added_count: 7
   postman: done
   execution: pending
-  bugs: pending
+  bugs: done
 apply_coupon:
   spec_analysis: done
   ai_generation: done
@@ -15,7 +15,7 @@ apply_coupon:
   human_added_count: 7
   postman: done
   execution: pending
-  bugs: pending
+  bugs: done
 admin_create_coupon:
   spec_analysis: done
   ai_generation: done
@@ -24,7 +24,7 @@ admin_create_coupon:
   human_added_count: 7
   postman: done
   execution: pending
-  bugs: pending
+  bugs: done
 global:
   cicd: pending
   report: pending

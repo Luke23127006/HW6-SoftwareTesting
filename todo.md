@@ -843,6 +843,10 @@ docs: add confirmed API bug reports
 
 Review the final collection and list only features actually used.
 
+- [x] Review the final collection and environment
+- [x] Document only features verified in the artifacts
+- [x] Record explicitly unused candidate features
+
 Potential features:
 
 ```text
@@ -860,6 +864,8 @@ monitor
 Do not claim unused features.
 
 Update relevant report section.
+
+- [x] Updated `README.md` and `docs/report.md`
 
 ---
 
@@ -883,15 +889,15 @@ Replace placeholders with actual SUT commands.
 
 Pipeline should:
 
-- [ ] checkout
-- [ ] setup Node
-- [ ] install backend dependencies
-- [ ] start backend
-- [ ] wait until backend ready
-- [ ] install Newman
-- [ ] execute tests
-- [ ] create JSON/HTML reports
-- [ ] upload reports
+- [x] checkout
+- [x] setup Node
+- [x] install backend dependencies
+- [x] start backend
+- [x] wait until backend ready
+- [x] install Newman
+- [x] execute tests
+- [x] create JSON/HTML reports
+- [x] upload reports
 
 ## 14.2 Passing Run
 

@@ -949,3 +949,127 @@ Applied the student's explicit confirmation of all four SUT bug-candidate groups
 
 `NOT_RETAINED`
 
+## AI-034
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 09:11:48 +07
+
+### Prompt
+
+```text
+continue
+```
+
+### AI Response Summary
+
+Checked HUMAN GATE B2 for real GitHub Issue evidence. The gate remains PENDING; all four issue numbers, URLs, and screenshot paths are still placeholders, and evidence contains only the previously verified X-Student-Id screenshot. No GitHub evidence was fabricated or inferred, and the workflow remains paused.
+
+### Artifacts
+
+- `docs/ai-audit.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-035
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 09:14:51 +07
+
+### Prompt
+
+```text
+get the content from these files: - `bugs/BUG-001.md` — incorrect percent calculation
+- `bugs/BUG-002.md` — equality at minimum rejected
+- `bugs/BUG-003.md` — Apply Coupon accepts invalid/missing JWT
+- `bugs/BUG-004.md` — Admin accepts missing required coupon fields
+
+I have fill all the evidences
+```
+
+### AI Response Summary
+
+Read all four bug reports and verified the newly supplied evidence. Confirmed screenshots exist for GitHub Issues #1 through #4 and visually show the matching repository, issue number, title, and open issue content; confirmed the Git remote matches the issue repository. Added explicit issue numbers to each bug report, archived GITHUB-BUG-ISSUES-01 with URLs and screenshot references, marked per-API bug reporting done, and reset tmp.md. Preserved commit a674794 as screenshot-supplied evidence while noting it was unavailable in the local Git object database.
+
+### Artifacts
+
+- `bugs/BUG-001.md`
+- `bugs/BUG-002.md`
+- `bugs/BUG-003.md`
+- `bugs/BUG-004.md`
+- `evidence/bugs/github-bug-001.png`
+- `evidence/bugs/github-bug-002.png`
+- `evidence/bugs/github-bug-003.png`
+- `evidence/bugs/github-bug-004.png`
+- `ai-logs/human-gates/GITHUB-BUG-ISSUES-01.md`
+- `state/hw06-state.yaml`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-036
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 09:17:03 +07
+
+### Prompt
+
+```text
+get the content from these files: - `bugs/BUG-001.md` — incorrect percent calculation
+- `bugs/BUG-002.md` — equality at minimum rejected
+- `bugs/BUG-003.md` — Apply Coupon accepts invalid/missing JWT
+- `bugs/BUG-004.md` — Admin accepts missing required coupon fields
+
+I have fill all the evidences
+```
+
+### AI Response Summary
+
+Completed Phase 13 by inspecting the final Postman collection and environment and documenting only features verified in those artifacts. Recorded the five collection folders, 133 executable requests, environment variables, collection-level X-Student-Id injection, executable test scripts, runtime JWT/coupon-ID capture, and local Newman reporters. Explicitly recorded that data-driven runner input, mock servers, and monitors were not used, and did not claim a workspace as an implemented feature. Updated the Phase 13 checklist; execution and CI/CD states remain pending.
+
+### Artifacts
+
+- `README.md`
+- `docs/report.md`
+- `todo.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-037
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 09:18:25 +07
+
+### Prompt
+
+```text
+get the content from these files: - `bugs/BUG-001.md` — incorrect percent calculation
+- `bugs/BUG-002.md` — equality at minimum rejected
+- `bugs/BUG-003.md` — Apply Coupon accepts invalid/missing JWT
+- `bugs/BUG-004.md` — Admin accepts missing required coupon fields
+
+I have fill all the evidences
+```
+
+### AI Response Summary
+
+Completed the automatable portion of Phase 14 by verifying that the existing GitHub Actions workflow uses the actual backend dependency install and startup commands, waits for the real readiness endpoint, runs Newman with JSON and HTML Extra reporters, and uploads reports even on failure. Documented the pipeline in docs/cicd-report.md and marked only the workflow-configuration checklist complete. Opened human gate CI-PASS-01 for real passing-run evidence. Explicitly noted that the existing local Newman result cannot serve as PASS evidence because it contains confirmed SUT defects and data-setup failures; no CI evidence was fabricated.
+
+### Artifacts
+
+- `.github/workflows/api-tests.yml`
+- `docs/cicd-report.md`
+- `todo.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
