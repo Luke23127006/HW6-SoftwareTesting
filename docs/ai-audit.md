@@ -918,3 +918,34 @@ Closed and archived the verified X-Student-Id screenshot gate, parsed the real N
 
 `NOT_RETAINED`
 
+## AI-033
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 08:46:37 +07
+
+### Prompt
+
+```text
+I have reviewed and approve all, continue
+```
+
+### AI Response Summary
+
+Applied the student's explicit confirmation of all four SUT bug-candidate groups while leaving 18 DATA_SETUP_FAILURE cases unconfirmed as bugs. Created four traceable Markdown bug reports for the incorrect percent formula, rejected inclusive threshold, missing Apply Coupon JWT enforcement, and missing Admin coupon required-field validation, plus a consolidated docs/bugs.md index. Preserved real Newman evidence and left GitHub URLs, issue numbers, commit hashes, and screenshots as PENDING_HUMAN_ACTION. Archived BUG-CANDIDATES-01 and reset tmp.md.
+
+### Artifacts
+
+- `reports/results.json`
+- `bugs/BUG-001.md`
+- `bugs/BUG-002.md`
+- `bugs/BUG-003.md`
+- `bugs/BUG-004.md`
+- `docs/bugs.md`
+- `ai-logs/human-gates/BUG-CANDIDATES-01.md`
+- `tmp.md`
+- `docs/ai-audit.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+

@@ -1,43 +1,40 @@
-# HUMAN GATE B1 — Confirm SUT Bug Candidates
+# HUMAN GATE B2 — Create Real GitHub Issues
 
-**Gate ID:** BUG-CANDIDATES-01  
+**Gate ID:** GITHUB-BUG-ISSUES-01  
 **Status:** WAITING_FOR_HUMAN  
 **Decision:** PENDING
 
 ## Reason for stopping
 
-The first real Newman run produced eight requirement-backed `SUT_BUG_CANDIDATE` items. A failed test is not automatically a bug, and Codex cannot make the final defect decision for the student.
+Four defects were confirmed and documented locally. HW06 requires real GitHub Issues with screenshots. Codex must not invent issue URLs, numbers, or screenshots.
 
 ## Exact human task
 
-Review `reports/failure-analysis.md` and decide `CONFIRM_BUG`, `REJECT_BUG`, or `NEEDS_RERUN` for each group:
+Create one real GitHub Issue for each report, copying its reproducible content:
 
-| Group | Tests | Requirement | Decision |
-| --- | --- | --- | --- |
-| B1 — Incorrect percent calculation | COUPON-AI-001, COUPON-AI-017 | FR-09 percent formula | PENDING |
-| B2 — Minimum equality rejected | COUPON-AI-007 | FR-09 C3 (`>=`) | PENDING |
-| B3 — Apply Coupon ignores JWT | COUPON-AI-009, 010, 011 | FR-09 C4, SEC-02 | PENDING |
-| B4 — Admin accepts missing required fields | ADMIN-COUPON-AI-008, 032 | FR-17 | PENDING |
+- `bugs/BUG-001.md` — incorrect percent calculation
+- `bugs/BUG-002.md` — equality at minimum rejected
+- `bugs/BUG-003.md` — Apply Coupon accepts invalid/missing JWT
+- `bugs/BUG-004.md` — Admin accepts missing required coupon fields
 
-The other 18 failures are classified `DATA_SETUP_FAILURE` and are not offered as bugs.
+Attach readable real evidence to each issue. Then save screenshots under `evidence/` and fill:
 
-## Evidence to review
+| Bug     | Issue number | Real GitHub URL      | Screenshot path      |
+| ------- | ------------ | -------------------- | -------------------- |
+| BUG-001 | PENDING      | PENDING_HUMAN_ACTION | PENDING_HUMAN_ACTION |
+| BUG-002 | PENDING      | PENDING_HUMAN_ACTION | PENDING_HUMAN_ACTION |
+| BUG-003 | PENDING      | PENDING_HUMAN_ACTION | PENDING_HUMAN_ACTION |
+| BUG-004 | PENDING      | PENDING_HUMAN_ACTION | PENDING_HUMAN_ACTION |
 
-- `reports/newman/report.json`
-- `reports/newman/report.html`
-- `reports/results.json`
-- `reports/failure-analysis.md`
-- `docs/test-summary.md`
+## Evidence required
 
-## Required human fields
+- Four real issue numbers and direct URLs.
+- Four readable screenshots showing the created issues/evidence.
+- URLs are accessible in the intended public repository.
+- Set overall `Decision` to `APPROVED`.
 
-- Decision for B1: PENDING
-- Decision for B2: PENDING
-- Decision for B3: PENDING
-- Decision for B4: PENDING
-- Human reasoning for each confirmed/rejected group: PENDING_HUMAN_ACTION
-- Overall `Decision`: `APPROVED`, `MODIFIED`, or `REJECTED`
+**Human notes:** PENDING_HUMAN_ACTION
 
 ## Completion instructions
 
-Update this file or reply with explicit decisions and reasoning for B1–B4, then ask Codex to continue. Confirmed groups may proceed to reproducible Markdown bug reports. Real GitHub Issue creation/URLs/screenshots will require a later human gate.
+Update this file and ask Codex to continue. Codex will verify the supplied files/URLs syntactically, update each local bug report, archive this gate, and continue. It will not fabricate or silently replace missing evidence.

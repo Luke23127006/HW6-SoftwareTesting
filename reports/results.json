@@ -881,7 +881,9 @@
         }
       ]
     },
-    "needs_human_confirmation": true
+    "needs_human_confirmation": false,
+    "human_confirmation": true,
+    "human_decision": "CONFIRM_BUG"
   },
   {
     "test_id": "COUPON-AI-002",
@@ -986,7 +988,9 @@
         }
       ]
     },
-    "needs_human_confirmation": true
+    "needs_human_confirmation": false,
+    "human_confirmation": true,
+    "human_decision": "CONFIRM_BUG"
   },
   {
     "test_id": "COUPON-AI-008",
@@ -1025,7 +1029,9 @@
         }
       ]
     },
-    "needs_human_confirmation": true
+    "needs_human_confirmation": false,
+    "human_confirmation": true,
+    "human_decision": "CONFIRM_BUG"
   },
   {
     "test_id": "COUPON-AI-010",
@@ -1050,7 +1056,9 @@
         }
       ]
     },
-    "needs_human_confirmation": true
+    "needs_human_confirmation": false,
+    "human_confirmation": true,
+    "human_decision": "CONFIRM_BUG"
   },
   {
     "test_id": "COUPON-AI-011",
@@ -1075,7 +1083,9 @@
         }
       ]
     },
-    "needs_human_confirmation": true
+    "needs_human_confirmation": false,
+    "human_confirmation": true,
+    "human_decision": "CONFIRM_BUG"
   },
   {
     "test_id": "COUPON-AI-012",
@@ -1202,7 +1212,9 @@
         }
       ]
     },
-    "needs_human_confirmation": true
+    "needs_human_confirmation": false,
+    "human_confirmation": true,
+    "human_decision": "CONFIRM_BUG"
   },
   {
     "test_id": "COUPON-AI-018",
@@ -1711,7 +1723,9 @@
         }
       ]
     },
-    "needs_human_confirmation": true
+    "needs_human_confirmation": false,
+    "human_confirmation": true,
+    "human_decision": "CONFIRM_BUG"
   },
   {
     "test_id": "ADMIN-COUPON-AI-009",
@@ -2091,7 +2105,9 @@
         }
       ]
     },
-    "needs_human_confirmation": true
+    "needs_human_confirmation": false,
+    "human_confirmation": true,
+    "human_decision": "CONFIRM_BUG"
   },
   {
     "test_id": "ADMIN-COUPON-AI-033",
