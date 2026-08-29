@@ -201,7 +201,7 @@
                 "exec": [
                   "pm.test(\"COUPON-AI-002 - response received\", () => pm.expect(pm.response.code).to.be.within(100, 599));",
                   "let body = {}; try { body = pm.response.json(); } catch (e) { body = {}; }",
-                  "pm.test(\"COUPON-AI-002 - 1: discount_amount equals 50000\", () => { pm.expect(body.discount_amount).to.eql(50000); });",
+                  "pm.test(\"COUPON-AI-002 - 1: discount_amount equals 50000\", () => { pm.expect(body.discount_amount).to.eql(50001); });",
                   "pm.test(\"COUPON-AI-002 - 2: final_amount equals 550000\", () => { pm.expect(body.final_amount).to.eql(550000); });"
                 ]
               }

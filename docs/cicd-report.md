@@ -47,12 +47,14 @@ The student approved this strategy. The manual `workflow_dispatch` input now off
 
 ## Passing Run
 
-- Commit SHA: `PENDING_HUMAN_ACTION`
-- GitHub Actions URL: `PENDING_HUMAN_ACTION`
-- Screenshot: `PENDING_HUMAN_ACTION`
-- Result: `PENDING_HUMAN_ACTION`
+- Commit SHA: `5308109afb952ef31371e7e59fe66af2d15036e1`
+- GitHub Actions URL: https://github.com/Luke23127006/HW6-SoftwareTesting/actions/runs/33259457076
+- Job URL: https://github.com/Luke23127006/HW6-SoftwareTesting/actions/runs/33259457076/job/99118782545
+- Screenshot: `evidence/ci/ci-pass-demo.png`
+- Result: **PASS**
+- Scope: transparent five-request CI demonstration subset; this is not a full-suite PASS.
 
-`CI-PASS-01` remains **NOT APPROVED**. A full-suite PASS cannot honestly be claimed while valid tests expose genuine SUT defects. Confirmed SUT defects are reportable findings and are not mandatory SUT fixes.
+The public Actions API and screenshot verify a manual `workflow_dispatch` success at the recorded commit. The authoritative full suite continues to preserve and expose the confirmed SUT defects.
 
 ## Intentionally Failing Run
 

@@ -1485,3 +1485,30 @@ Applied the student's approval of CI-DEMO-STRATEGY-01. Preserved the authoritati
 
 `NOT_RETAINED`
 
+## AI-050
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 22:18:23 +07
+
+### Prompt
+
+```text
+continue
+```
+
+### AI Response Summary
+
+Validated and closed CI-PASS-01 using the real screenshot and public GitHub Actions API. Confirmed workflow_dispatch run 33259457076 and api-tests job 99118782545 completed successfully at commit 5308109afb952ef31371e7e59fe66af2d15036e1. Recorded it explicitly as a five-request demonstration-subset PASS, not a full-suite PASS. Archived the gate and prepared CI-FAIL-01 for exactly one temporary impossible assertion in the separate demonstration collection, leaving the authoritative full collection unchanged. No failure outcome, commit, URL, or screenshot was fabricated.
+
+### Artifacts
+
+- `evidence/ci/ci-pass-demo.png`
+- `docs/cicd-report.md`
+- `ai-logs/human-gates/CI-PASS-01.md`
+- `postman/HW06.ci-demonstration.postman_collection.json`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
