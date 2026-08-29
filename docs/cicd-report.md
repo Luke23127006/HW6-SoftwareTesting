@@ -58,11 +58,13 @@ The public Actions API and screenshot verify a manual `workflow_dispatch` succes
 
 ## Intentionally Failing Run
 
-- Commit SHA: `PENDING_HUMAN_ACTION`
-- GitHub Actions URL: `PENDING_HUMAN_ACTION`
-- Screenshot: `PENDING_HUMAN_ACTION`
-- Intentionally changed assertion: `PENDING_HUMAN_ACTION`
-- Result: `PENDING_HUMAN_ACTION`
+- Commit SHA: `168347660b306c43efa2bb55e69e403016724331`
+- GitHub Actions URL: https://github.com/Luke23127006/HW6-SoftwareTesting/actions/runs/33260060548
+- Job URL: https://github.com/Luke23127006/HW6-SoftwareTesting/actions/runs/33260060548/job/99120346545
+- Screenshot: `evidence/ci/ci-fail-demo.png`
+- Intentionally changed assertion: demonstration-only `COUPON-AI-002` discount expectation from `50000` to impossible value `50001`
+- Result: **FAIL** — one student-confirmed intentional assertion failure
+- Scope: separate demonstration subset; authoritative full collection unchanged
 
 ## Revert Confirmation
 

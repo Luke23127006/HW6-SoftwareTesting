@@ -1512,3 +1512,30 @@ Validated and closed CI-PASS-01 using the real screenshot and public GitHub Acti
 
 `NOT_RETAINED`
 
+## AI-051
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 22:25:26 +07
+
+### Prompt
+
+```text
+continue
+```
+
+### AI Response Summary
+
+Validated and closed CI-FAIL-01. The screenshot and public Actions API confirmed a workflow_dispatch failure at temporary commit 168347660b306c43efa2bb55e69e403016724331 and job 99120346545; the student explicitly confirmed one failed assertion. Recorded that only the separate demonstration collection changed from expected discount 50000 to impossible 50001 and that the authoritative collection remained unchanged. Noted that unauthenticated GitHub job logs returned 403 rather than fabricating log details. Restored the valid assertion locally and opened CI-REVERT-01 for the real revert commit SHA.
+
+### Artifacts
+
+- `evidence/ci/ci-fail-demo.png`
+- `docs/cicd-report.md`
+- `ai-logs/human-gates/CI-FAIL-01.md`
+- `postman/HW06.ci-demonstration.postman_collection.json`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
