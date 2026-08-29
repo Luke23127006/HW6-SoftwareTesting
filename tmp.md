@@ -1,34 +1,29 @@
-# HUMAN GATE CI-PASS-01
+# HUMAN GATE CI-NEW-BUG-CANDIDATES-01
 
-Status: WAITING_FOR_HUMAN
+Status: APPROVED
 
-Reason for stopping: Phase 14 requires evidence from a real GitHub Actions run in which all intended API tests pass. Codex must not fabricate the commit SHA, Actions URL, screenshot, or outcome. The existing local Newman report is not a passing baseline: it contains confirmed SUT defects and data-setup failures.
+Reason for stopping: CI triage found 11 additional requirement-backed SUT bug candidates. AI may recommend classification but must not confirm genuine bugs or extend bug reports without the student's explicit decision.
 
 ## Human task
 
-1. Ensure the repository version you push has all intended API tests passing without weakening or removing valid defect-detecting assertions. Resolve the confirmed SUT defects and remaining data-setup failures first if they are still present.
-2. Commit and push `.github/workflows/api-tests.yml`, the Postman artifacts, and any legitimate prerequisite fixes.
-3. Open the resulting `HW06 API Tests` GitHub Actions run and verify that it passes.
-4. Save a readable screenshot under `evidence/cicd/`.
-5. Replace the pending fields below with the real values and set `Decision: APPROVED`.
+Review `reports/newman-report/failure-analysis.md`, especially “Unconfirmed SUT Bug Candidates,” and decide whether the 11 cases are genuine SUT defects.
 
-## Files to review
+For each test ID below, enter `CONFIRM_BUG` or `REJECT_BUG` and a short reason:
 
-- `.github/workflows/api-tests.yml`
-- `docs/cicd-report.md`
-- `reports/newman/report.html`
+- `ADMIN-COUPON-AI-006`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-013`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-014`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-015`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-016`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-017`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-022`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-023`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-025`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-026`: CONFIRM_BUG — reason: PENDING
+- `ADMIN-COUPON-AI-028`: CONFIRM_BUG — reason: PENDING
 
-## Required evidence
-
-- Commit SHA: PENDING
-- GitHub Actions URL: PENDING
-- Screenshot path: PENDING
-- Result: PENDING
-
-Decision: PENDING
-
-Notes: Do not approve this gate using the existing failing local Newman run. If a clean passing baseline cannot be produced without changing intended requirements, record that limitation in Notes instead of claiming PASS.
+Decision: APPROVED
 
 ## Completion instruction
 
-After filling the real evidence and decision, ask Codex to continue.
+After filling all 11 decisions and reasons, set `Decision: APPROVED` and ask Codex to continue. The 12 setup/data failures and zero identified test defects do not require a human verdict and will be handled separately after this gate.

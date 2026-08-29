@@ -903,6 +903,16 @@ Pipeline should:
 
 Push commit with valid tests.
 
+- [x] Verify CI pipeline reaches and executes Newman on a real run
+- [x] Record current full-suite FAIL as operational evidence, not PASS or intentional single-FAIL evidence
+- [x] Inspect repository and public Actions history for a pre-existing PASS baseline
+- [x] Confirm no historical PASS run currently exists
+- [x] Obtain the exported Newman JSON/HTML from CI run `33228816770`
+- [x] Classify every CI failure as confirmed SUT defect, setup/environment failure, incorrect test, or unconfirmed requirement-backed bug candidate
+- [ ] Correct only setup/environment failures and genuinely incorrect tests
+- [ ] Preserve confirmed defect-detecting tests and expected results in the complete suite
+- [ ] Obtain student approval for a transparent CI demonstration subset if a full-suite PASS remains impossible without fixing reported SUT defects
+
 ---
 
 ## HUMAN GATE CI1 — Capture PASS Evidence
@@ -915,6 +925,8 @@ GitHub Actions URL
 screenshot
 ```
 
+This gate must remain open until a real passing run exists. Confirmed SUT defects do not have to be fixed merely to make CI green, and valid assertions must not be weakened, removed, skipped, or changed to match buggy behavior. The operational 37-failure run is neither PASS evidence nor the intentional one-failure sample.
+
 ---
 
 ## 14.3 Intentional Failure
@@ -922,6 +934,8 @@ screenshot
 Change exactly one test assertion temporarily.
 
 Commit and push.
+
+Do not start this step until a legitimate PASS baseline exists. Use a separate temporary demonstration commit, capture a run with exactly one intentional assertion failure, and then revert the modification. Preserve the authoritative full-suite tests throughout.
 
 ---
 

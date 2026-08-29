@@ -1073,3 +1073,167 @@ Completed the automatable portion of Phase 14 by verifying that the existing Git
 
 `NOT_RETAINED`
 
+## AI-038
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 09:46:48 +07
+
+### Prompt
+
+```text
+I have now provided real CI failure evidence for the current HW06 test suite.
+
+Evidence from the real GitHub Actions run shows:
+
+- The HW06 API Tests workflow starts successfully.
+- The api-tests job reaches the Run Newman step.
+- Newman executes the real collection successfully.
+- Newman exits with code 1 because test assertions fail.
+- The generated Newman HTML report shows:
+  - Total Requests: 133
+  - Total Assertions: 375
+  - Failed Tests: 37
+  - Skipped Tests: 0
+- The GitHub Actions log contains real assertion failures such as:
+  - ADMIN-COUPON-AI-025
+  - ADMIN-COUPON-AI-026
+  - ADMIN-COUPON-AI-028
+  - ADMIN-COUPON-AI-032
+- Some failures correspond to already confirmed genuine SUT defects.
+
+Important correction to the current plan:
+
+HW06 requires us to REPORT genuine SUT bugs, but it does NOT require us to fix those bugs in the SUT.
+
+Therefore, do NOT require SUT bug fixes merely to make CI green.
+Do NOT weaken valid assertions.
+Do NOT change expected results to match buggy SUT behavior.
+Do NOT skip or remove genuine defect-detecting tests.
+Do NOT mark CI-PASS-01 as APPROVED without a real passing run.
+
+Please revise Phase 14 and the human gates accordingly.
+
+Required actions:
+
+1. Treat this current GitHub Actions run as legitimate evidence that:
+   - the CI pipeline is operational;
+   - Newman is actually executed in CI;
+   - the current full test suite exposes real failures.
+
+2. Do NOT use this run as the final required "one test case failing" sample yet, because this run contains 37 failed tests, while the assignment specifically asks for a sample run with one failing test.
+
+3. Separate the current failures into:
+   A. confirmed genuine SUT defects;
+   B. test-data/setup/environment failures;
+   C. genuinely incorrect test cases, if any.
+   
+   Only B and C should be corrected as part of the testing infrastructure.
+   Do not classify a valid defect-detecting assertion as a test/setup problem merely because it fails.
+
+4. Update CI-PASS-01 so that it no longer says confirmed SUT defects MUST be fixed before proceeding.
+
+   Its notes should explicitly state that the current suite cannot honestly be claimed as PASS while valid tests expose genuine defects.
+
+5. Before inventing a new strategy, inspect the repository history / available CI history and determine whether there is already a real commit where the intended CI test suite passed.
+   
+   If such a real passing commit exists, propose using that as the required PASS sample and record its real evidence through a human gate.
+
+6. If no suitable real passing commit exists, revise the plan and explain the smallest academically valid method to obtain the required PASS demonstration WITHOUT:
+   - falsifying test expectations;
+   - hiding known bugs;
+   - deleting valid test cases;
+   - claiming false evidence.
+
+7. Preserve the confirmed bugs and their failing tests in the final test artifacts.
+
+8. For the assignment's required FAIL demonstration, after a legitimate PASS baseline exists, create a separate temporary demonstration commit with EXACTLY ONE intentional failing assertion, run CI, capture the real failure evidence, then revert the intentional modification.
+
+9. Update:
+   - todo.md
+   - docs/cicd-report.md planning section
+   - CI-PASS-01
+   - any related human-gate workflow documentation
+   
+   so they reflect this corrected process.
+
+10. Do not fabricate URLs, commit SHAs, screenshots, CI outcomes, or PASS status.
+
+For now, the correct interpretation of the supplied evidence is:
+
+CI pipeline execution: VERIFIED
+Newman execution in CI: VERIFIED
+Current suite result: FAIL
+Failed tests: 37
+CI-PASS-01: NOT APPROVED
+Confirmed SUT bugs: remain defects to REPORT, not mandatory fixes
+
+Update the plan/gates first, then stop and tell me exactly what human action is actually required next.
+```
+
+### AI Response Summary
+
+Validated the real CI failure screenshot for commit 34ea594 and its GitHub Actions job, confirming that the api-tests job reached Newman, assertion failures caused exit code 1, and report upload succeeded. Recorded the student-confirmed totals of 133 requests, 375 assertions, 37 failed tests, and zero skipped tests as operational CI evidence, explicitly not as PASS or the intentional single-failure sample. Inspected all local commits and GitHub's public Actions history: all four workflow runs failed, and neither of the two runs containing the final collection passed. Revised Phase 14 so confirmed SUT defects remain preserved and reportable, only setup/environment or genuine test defects may be corrected, and CI-PASS-01 remains unapproved. Proposed a transparent separate smoke-subset demonstration only as the smallest fallback subject to approval. Opened CI-TRIAGE-01 requesting the exported CI Newman JSON/HTML because the screenshot shows failures absent from the retained local failure set and full A/B/C classification cannot be completed honestly without the artifact.
+
+### Artifacts
+
+- `evidence/ci/ci-fail.png`
+- `docs/cicd-report.md`
+- `todo.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-039
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 15:54:09 +07
+
+### Prompt
+
+```text
+continue
+```
+
+### AI Response Summary
+
+Validated the student's CI-TRIAGE-01 response but did not close the human gate because the required CI artifact was incomplete. The specified run-specific directory reports/ci/run-33228816770 did not exist, reports/newman/report.json was missing, and only reports/newman/report.html was present at an alternate path that must remain separate from the retained local run. Reset the gate to WAITING_FOR_HUMAN and Decision PENDING, with exact required destinations for the CI report.json and report.html. No failure classifications, CI PASS status, or evidence were fabricated.
+
+### Artifacts
+
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
+## AI-040
+
+**Tool:** Codex / GPT-5.6 Sol  
+**Time:** 2026-08-29 16:08:05 +07
+
+### Prompt
+
+```text
+You can check reports\newman-report , continue
+```
+
+### AI Response Summary
+
+Validated the downloaded CI artifact under reports/newman-report and closed CI-TRIAGE-01 using the student-approved alternate path. The JSON established 133 requests, 375 assertions, 39 failed assertions, no failed test scripts, and 31 failed request items; preserved the discrepancy with the earlier student-reported value of 37. Classified 8 items as already-confirmed SUT defects, 12 as setup/data failures, zero as identified incorrect tests, and 11 as additional requirement-backed SUT bug candidates. Preserved all valid defect-detecting assertions. Updated the CI report and todo, archived the completed artifact gate, created a detailed CI failure analysis, and opened CI-NEW-BUG-CANDIDATES-01 because AI cannot confirm the 11 new candidates as genuine bugs.
+
+### Artifacts
+
+- `reports/newman-report/report.json`
+- `reports/newman-report/report.html`
+- `reports/newman-report/failure-analysis.md`
+- `docs/cicd-report.md`
+- `todo.md`
+- `ai-logs/human-gates/CI-TRIAGE-01.md`
+- `tmp.md`
+
+### Full Output Reference
+
+`NOT_RETAINED`
+
